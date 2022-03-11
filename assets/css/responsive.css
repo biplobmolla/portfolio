@@ -130,8 +130,9 @@
         margin-left: 20%;
     }
 
-    #works .col:last-child {
-        display: none;
+    #works .row .col:last-child {
+        /* display: none; */
+        transform: scale(1.5);
     }
 
     #latest .card-image {
