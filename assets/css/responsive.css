@@ -43,6 +43,10 @@
         display: flex;
         justify-content: space-evenly;
     }
+
+    .contact-info .card {
+        height: 100%;
+    }
 }
 
 @media only screen and (max-width: 620px) {
@@ -130,11 +134,6 @@
         margin-left: 20%;
     }
 
-    #works .row .col:last-child {
-        /* display: none; */
-        transform: scale(1.5);
-    }
-
     #latest .card-image {
         width: 7em;
         height: 5em;
@@ -196,5 +195,24 @@
         font-size: 0.8em;
         position: absolute;
         bottom: 5em;
+    }
+}
+
+@media only screen and (max-width: 885px) {
+    #works .row {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #works .row .col {
+        display: none;
+    }
+
+    #works .row .col:nth-child(1),
+    #works .row .col:nth-child(2),
+    #works .row .col:nth-child(3) {
+        display: block;
     }
 }
