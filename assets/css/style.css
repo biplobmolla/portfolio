@@ -89,6 +89,10 @@ p {
     transition: 0.5s;
 }
 
+section:not(#hero) {
+    z-index: 960;
+}
+
 /* Navigation Section */
 
 nav {
@@ -233,7 +237,6 @@ nav ul li a:hover {
     top: 150%;
     left: 0;
     transition: 0.6s ease;
-    z-index: 960;
 }
 
 #about .max-width {
