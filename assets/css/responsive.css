@@ -1,0 +1,199 @@
+@media only screen and (max-width: 1100px) {
+    #latest .card-image {
+        width: 10em;
+        height: 7em;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+    }
+
+    #latest .card-image img {
+        transform: rotateX(40deg) rotateY(10deg) rotateZ(10deg);
+    }
+
+    #latest .card-image button {
+        font-size: 0.6em;
+        background-color: #10369A;
+        color: #fff;
+        transform: translateY(-2em) translateX(-2em) translateZ(2em) rotateX(-20deg) rotateY(10deg) rotateZ(10deg);
+    }
+
+    #latest .card-title {
+        font-size: 1em;
+    }
+
+    #latest .title {
+        font-size: 2em;
+        margin-left: 1em;
+    }
+
+    .contact-info .card-back .card-back-text {
+        max-width: 85%;
+        margin: 0 auto;
+        word-wrap: break-word;
+        line-height: 1.5em;
+        font-size: 0.6em;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    html {
+        font-size: 10px;
+    }
+
+    #latest .latest-content {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    html {
+        font-size: 10px;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-text {
+        margin-top: 2.5em;
+        width: 70%;
+    }
+
+
+    .about-image {
+        width: 40%;
+        height: 100%;
+    }
+
+    .about-image img {
+        transform: translateZ(10em) rotateX(15deg) rotateY(30deg) rotateZ(15deg);
+    }
+
+    .max-width {
+        width: 100%;
+    }
+
+    .contact-content {
+        padding: 1em;
+        height: 100%;
+        margin-top: 30%;
+        transform: translateY(-30%);
+    }
+
+    .contact-info {
+        width: 22%;
+    }
+
+}
+
+@media only screen and (max-width: 520px) {
+
+    .latest-content {
+        margin-left: 3em;
+    }
+
+    #latest .card-image {
+        width: 8em;
+        height: 5em;
+    }
+
+    #latest .title {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    /* Navigation Section */
+
+    nav ul li a {
+        font-size: 0.8em;
+    }
+
+    /* About Section */
+    .about-text {
+        font-size: 0.8rem;
+    }
+
+    /* Works Section */
+
+    #works .title {
+        font-size: 2.5em;
+        margin-right: 10%;
+    }
+
+    #works a {
+        font-size: 0.9em;
+        margin-left: 20%;
+    }
+
+    #works .col:last-child {
+        display: none;
+    }
+
+    #latest .card-image {
+        width: 7em;
+        height: 5em;
+    }
+
+    .latest-content {
+        margin-left: 0em;
+    }
+
+    .contact-info .card-front i {
+        font-size: 2em;
+    }
+
+    .contact-info .card-front span {
+        font-size: 1em;
+    }
+
+    .contact-info .card-back {
+        font-size: 0.6em;
+    }
+
+    .contact-info .card-back button {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    #works .title {
+        font-size: 1.5em;
+        margin: 0;
+    }
+
+    #works a {
+        font-size: 0.5em;
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 250px) {
+    #works a {
+        position: fixed;
+        width: 40px;
+        text-align: center;
+        top: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #contact .title {
+        font-size: 20px;
+        padding-top: 5em;
+    }
+
+    .contact-info .card-back {
+        font-size: 0.3em;
+    }
+
+    .contact-info .card-back button {
+        font-size: 0.8em;
+        position: absolute;
+        bottom: 5em;
+    }
+}
