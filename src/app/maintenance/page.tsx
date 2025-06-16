@@ -13,12 +13,12 @@ export default function MaintenancePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-purple-900 to-slate-900 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-2xl w-full bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl"
+        className="max-w-2xl w-full bg-white/5 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10"
       >
         <motion.div
           initial={{ scale: 0.8 }}
@@ -26,10 +26,14 @@ export default function MaintenancePage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             🚧 Website Under Maintenance 🚧
-          </h1>
-          <p className="text-xl text-gray-200 mb-8">
+          </motion.h1>
+          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
             We're currently working on something awesome! Please check back soon.
           </p>
         </motion.div>
@@ -50,10 +54,21 @@ export default function MaintenancePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
-                className="flex items-center space-x-2 bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-full transition-all duration-300"
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
+                  boxShadow: "0 0 20px rgba(255, 255, 255, 0.1)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/10 hover:border-white/20"
               >
-                {link.icon}
-                <span>{link.label}</span>
+                <motion.span
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {link.icon}
+                </motion.span>
+                <span className="font-medium">{link.label}</span>
               </motion.a>
             ))}
           </div>
@@ -64,7 +79,17 @@ export default function MaintenancePage() {
             transition={{ duration: 0.5, delay: 1 }}
             className="mt-8 text-gray-300"
           >
-            <p>Contact us at: <a href="mailto:ahmedtamim317@gmail.com" className="text-white hover:underline">ahmedtamim317@gmail.com</a></p>
+            <p className="text-lg">
+              Contact us at:{' '}
+              <motion.a 
+                href="mailto:ahmedtamim317@gmail.com" 
+                className="text-white hover:text-purple-300 transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ahmedtamim317@gmail.com
+              </motion.a>
+            </p>
           </motion.div>
         </motion.div>
       </motion.div>
