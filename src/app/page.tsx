@@ -30,7 +30,7 @@ export default function MaintenancePage() {
             🚧 Website Under Maintenance 🚧
           </h1>
           <p className="text-xl text-gray-200 mb-8">
-            We're currently working on something awesome! Please check back soon.
+            We&apos;re currently working on something awesome! Please check back soon.
           </p>
         </motion.div>
 
