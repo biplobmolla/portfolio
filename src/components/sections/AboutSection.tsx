@@ -11,10 +11,8 @@ export default function AboutSection() {
   const interests = [
     { icon: Code, label: 'Frontend Development', description: 'Building modern web applications with React & Next.js' },
     { icon: Palette, label: 'UI/UX Design', description: 'Creating beautiful, accessible user experiences' },
-    { icon: Brain, label: 'AI & ML', description: 'Exploring artificial intelligence and machine learning' },
-    { icon: Plane, label: 'Travel', description: 'Discovering new places, cultures, and experiences' },
     { icon: BookOpen, label: 'Learning', description: 'Always curious about new technologies and methodologies' },
-    { icon: Coffee, label: 'Coffee', description: 'Fueling creativity with the perfect cup of coffee' }
+    { icon: Plane, label: 'Travel', description: 'Discovering new places, cultures, and experiences' },
   ]
 
   const stats = [
