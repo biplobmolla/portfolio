@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, Mail, Phone, Github, Linkedin, Twitter, Code, Palette, Plane, Brain, Heart, Coffee, BookOpen } from 'lucide-react'
+import { MapPin, Mail, Phone, Github, Linkedin, Twitter, Code, Palette, Plane, Heart, BookOpen } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { personalInfo } from '@/data/portfolio'
 
