@@ -44,11 +44,12 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-muted/50 border-t w-full overflow-hidden relative">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-primary/5 opacity-50"></div>
+    <footer className="bg-slate-900 text-white border-t border-slate-800 w-full overflow-hidden relative">
+      {/* Modern Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 opacity-30"></div>
       
-      <div className="container mx-auto px-4 py-12 w-full max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 py-16 w-full max-w-7xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4 lg:col-span-2">
@@ -58,8 +59,8 @@ export default function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold text-foreground mb-2">{personalInfo.name}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
+              <h3 className="text-2xl font-bold text-white mb-2">{personalInfo.name}</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
                 {personalInfo.title} passionate about creating beautiful, interactive web experiences 
                 with modern technologies.
               </p>
@@ -76,10 +77,10 @@ export default function Footer() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors group"
+                    className="p-3 rounded-full bg-slate-800 hover:bg-primary/20 hover:scale-110 transition-all duration-300 group"
                     aria-label={social.label}
                   >
-                    <social.icon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                    <social.icon className="h-5 w-5 text-slate-300 group-hover:text-primary transition-colors" />
                   </motion.a>
                 ))}
               </div>
@@ -94,7 +95,7 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold text-foreground mb-4">Quick Links</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
                   <motion.li
@@ -106,7 +107,7 @@ export default function Footer() {
                   >
                     <a
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors flex items-center group"
+                      className="text-slate-300 hover:text-primary transition-colors flex items-center group"
                     >
                       <span className="group-hover:translate-x-1 transition-transform">
                         {link.name}
@@ -126,21 +127,21 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold text-foreground mb-4">Contact</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
               <div className="space-y-3">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="text-muted-foreground hover:text-primary transition-colors block"
+                  className="text-slate-300 hover:text-primary transition-colors block"
                 >
                   {personalInfo.email}
                 </a>
                 <a
                   href={`tel:${personalInfo.phone}`}
-                  className="text-muted-foreground hover:text-primary transition-colors block"
+                  className="text-slate-300 hover:text-primary transition-colors block"
                 >
                   {personalInfo.phone}
                 </a>
-                <p className="text-muted-foreground">{personalInfo.location}</p>
+                <p className="text-slate-300">{personalInfo.location}</p>
               </div>
             </motion.div>
           </div>
@@ -152,12 +153,12 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="border-t mt-12 pt-8"
+          className="border-t border-slate-800 mt-12 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-muted-foreground text-sm">
+            <div className="flex items-center space-x-2 text-slate-400 text-sm">
               <span>© {currentYear} {personalInfo.name}. Made with</span>
-              <Heart className="h-4 w-4 text-red-500 animate-pulse" />
+              <Heart className="h-4 w-4 text-red-400 animate-pulse" />
               <span>and</span>
               <Code className="h-4 w-4 text-primary" />
               <span>in Bangladesh</span>
@@ -168,7 +169,7 @@ export default function Footer() {
                 onClick={scrollToTop}
                 variant="outline"
                 size="sm"
-                className="group"
+                className="group border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white hover:border-primary"
               >
                 <ArrowUp className="h-4 w-4 mr-2 group-hover:-translate-y-1 transition-transform" />
                 Back to Top

@@ -236,10 +236,10 @@ export const personalInfo = {
   subtitle: 'Creating beautiful, interactive web experiences with modern technologies',
   bio: 'Passionate frontend developer with 2+ years of experience building modern web applications. I specialize in Next.js, React, TypeScript, and TailwindCSS. I have a strong interest in UI/UX design, business, AI & ML, and love to travel. Currently working as a Frontend Engineer at a startup while pursuing my Computer Science degree.',
   location: 'Dhaka, Bangladesh',
-  email: 'biplob.molla@email.com',
+  email: 'ahmedtamim317@gmail.com',
   phone: '+8801314886972',
   github: 'https://github.com/biplobmolla',
   linkedin: 'https://linkedin.com/in/biplobmolla',
-  twitter: 'https://twitter.com/biplobmolla',
+  twitter: 'https://x.com/biplobmolla01',
   website: 'https://biplobmolla.dev'
 }
