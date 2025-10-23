@@ -2,8 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Code, Database, Wrench, Palette, Zap, Globe } from 'lucide-react'
+import { Code, Database, Wrench, Palette, Zap } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { skills } from '@/data/portfolio'
 
