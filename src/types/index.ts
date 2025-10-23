@@ -17,9 +17,12 @@ export interface Experience {
   position: string
   startDate: string
   endDate?: string
+  location?: string
   description: string[]
   techStack: string[]
   current: boolean
+  projectType?: string
+  impact?: string
 }
 
 export interface Education {
