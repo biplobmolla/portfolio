@@ -3,195 +3,169 @@ import { Project, Experience, Education, Skill, Contribution } from '@/types'
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with modern UI and payment integration',
-    longDescription: 'A comprehensive e-commerce platform built with Next.js, featuring real-time inventory management, secure payment processing with Stripe, and an intuitive admin dashboard. The platform supports multiple payment methods and includes advanced features like wishlist, product reviews, and order tracking.',
-    image: '/projects/ecommerce.jpg',
-    techStack: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL', 'Prisma', 'TailwindCSS'],
-    liveUrl: 'https://ecommerce-demo.vercel.app',
-    githubUrl: 'https://github.com/biplobmolla/ecommerce-platform',
+    title: 'Marketplace Client',
+    description: 'University-focused job marketplace with modern UI and seamless user experience',
+    longDescription: 'A comprehensive job marketplace platform designed specifically for university students and recent graduates. Features include job posting, application tracking, company profiles, and advanced filtering. Built with Next.js App Router for optimal performance and SEO.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=center',
+    techStack: ['Next.js', 'TypeScript', 'Redux Toolkit', 'TailwindCSS', 'RTK Query'],
+    liveUrl: 'https://marketplace-client.vercel.app',
+    githubUrl: 'https://github.com/biplobmolla/marketplace-client',
     featured: true,
     category: 'web'
   },
   {
     id: '2',
-    title: 'Task Management App',
-    description: 'Collaborative task management with real-time updates and team features',
-    longDescription: 'A modern task management application with real-time collaboration features, drag-and-drop functionality, and team management capabilities. Built with React and Socket.io for real-time updates, featuring Kanban boards, time tracking, and project analytics.',
-    image: '/projects/taskmanager.jpg',
-    techStack: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'Express', 'Material-UI'],
-    liveUrl: 'https://taskmanager-demo.vercel.app',
-    githubUrl: 'https://github.com/biplobmolla/task-manager',
+    title: 'Ubaky Manager',
+    description: 'Restaurant management system with order tracking and inventory management',
+    longDescription: 'A comprehensive restaurant management solution featuring real-time order tracking, inventory management, staff scheduling, and analytics dashboard. Built with modern web technologies for optimal performance and user experience.',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop&crop=center',
+    techStack: ['Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Express.js'],
+    liveUrl: 'https://ubaky-manager.vercel.app',
+    githubUrl: 'https://github.com/biplobmolla/ubaky-manager',
     featured: true,
     category: 'web'
   },
   {
     id: '3',
-    title: 'Weather Dashboard',
-    description: 'Interactive weather dashboard with location-based forecasts',
-    longDescription: 'A beautiful weather dashboard featuring interactive maps, detailed forecasts, and location-based weather data. Includes historical weather data, severe weather alerts, and customizable widgets for different weather parameters.',
-    image: '/projects/weather.jpg',
-    techStack: ['Vue.js', 'D3.js', 'OpenWeather API', 'PWA', 'Service Workers'],
-    liveUrl: 'https://weather-dashboard.vercel.app',
-    githubUrl: 'https://github.com/biplobmolla/weather-dashboard',
-    featured: false,
-    category: 'web'
+    title: 'Ubaky Driver App',
+    description: 'React Native food ordering and scheduling application for delivery drivers',
+    longDescription: 'A mobile application built with React Native for food delivery drivers. Features include order management, route optimization, real-time tracking, and scheduling system. Designed for optimal performance on both iOS and Android platforms.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop&crop=center',
+    techStack: ['React Native', 'TypeScript', 'Redux Toolkit', 'React Navigation'],
+    liveUrl: undefined,
+    githubUrl: 'https://github.com/biplobmolla/ubaky-driver',
+    featured: true,
+    category: 'mobile'
   },
   {
     id: '4',
-    title: 'Mobile Banking App',
-    description: 'Secure mobile banking application with biometric authentication',
-    longDescription: 'A comprehensive mobile banking application with advanced security features including biometric authentication, transaction encryption, and fraud detection. Features include account management, money transfers, bill payments, and investment tracking.',
-    image: '/projects/banking.jpg',
-    techStack: ['React Native', 'Node.js', 'PostgreSQL', 'JWT', 'Biometric Auth'],
-    liveUrl: undefined,
-    githubUrl: 'https://github.com/biplobmolla/mobile-banking',
+    title: 'Hackverse',
+    description: 'Hackathon platform with event management and participant registration',
+    longDescription: 'A comprehensive hackathon platform featuring event creation, participant registration, team formation, and project submission. Includes real-time updates, leaderboards, and judging system. Built with modern web technologies for scalability.',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&crop=center',
+    techStack: ['Next.js', 'TypeScript', 'TailwindCSS', 'Node.js', 'MongoDB'],
+    liveUrl: 'https://hackverse.vercel.app',
+    githubUrl: 'https://github.com/biplobmolla/hackverse',
     featured: true,
-    category: 'mobile'
+    category: 'web'
+  },
+  {
+    id: '5',
+    title: 'ICPC Regional Website',
+    description: 'Registration, payments, and event information for ICPC programming contest',
+    longDescription: 'A specialized platform for ICPC (International Collegiate Programming Contest) regional events. Features include participant registration, payment processing, event information, and contest management. Built with focus on performance and user experience.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center',
+    techStack: ['Next.js', 'TypeScript', 'TailwindCSS', 'Stripe', 'Node.js'],
+    liveUrl: 'https://icpc-regional.vercel.app',
+    githubUrl: 'https://github.com/biplobmolla/icpc-regional',
+    featured: false,
+    category: 'web'
   }
 ]
 
 export const experiences: Experience[] = [
   {
     id: '1',
-    company: 'TechCorp Solutions',
-    position: 'Senior Frontend Developer',
-    startDate: '2022-01-01',
-    endDate: '2024-12-31',
+    company: 'Startup Company',
+    position: 'Frontend Engineer',
+    startDate: '2023-01-01',
+    endDate: undefined,
     description: [
-      'Led development of customer-facing web applications serving 100k+ users',
-      'Implemented responsive designs and optimized performance by 40%',
-      'Mentored junior developers and established coding standards',
-      'Collaborated with UX/UI designers to create intuitive user experiences'
+      'Developed modern web applications using Next.js and React',
+      'Implemented state management with Redux Toolkit and RTK Query',
+      'Created responsive UI components with TailwindCSS',
+      'Collaborated with backend team on API integration',
+      'Worked on multiple projects with flexible hours'
     ],
-    techStack: ['React', 'TypeScript', 'Next.js', 'TailwindCSS', 'GraphQL'],
-    current: false
-  },
-  {
-    id: '2',
-    company: 'StartupXYZ',
-    position: 'Full Stack Developer',
-    startDate: '2020-06-01',
-    endDate: '2021-12-31',
-    description: [
-      'Built end-to-end web applications from scratch',
-      'Designed and implemented RESTful APIs',
-      'Integrated third-party services and payment gateways',
-      'Optimized database queries and improved application performance'
-    ],
-    techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'AWS'],
-    current: false
-  },
-  {
-    id: '3',
-    company: 'Freelance',
-    position: 'Frontend Developer',
-    startDate: '2019-01-01',
-    endDate: '2020-05-31',
-    description: [
-      'Developed custom websites for small to medium businesses',
-      'Created responsive designs and mobile-first applications',
-      'Implemented SEO best practices and performance optimization',
-      'Maintained and updated existing client websites'
-    ],
-    techStack: ['HTML', 'CSS', 'JavaScript', 'jQuery', 'Bootstrap'],
-    current: false
+    techStack: ['Next.js', 'React', 'TypeScript', 'Redux Toolkit', 'RTK Query', 'TailwindCSS'],
+    current: true
   }
 ]
 
 export const education: Education[] = [
   {
     id: '1',
-    institution: 'University of Technology',
+    institution: 'University',
     degree: 'Bachelor of Science',
     field: 'Computer Science',
-    startDate: '2015-09-01',
-    endDate: '2019-06-01',
-    description: 'Focused on software engineering, algorithms, and web development. Graduated with honors.',
-    current: false
-  },
-  {
-    id: '2',
-    institution: 'Online Learning Platform',
-    degree: 'Certification',
-    field: 'Full Stack Web Development',
-    startDate: '2020-01-01',
-    endDate: '2020-06-01',
-    description: 'Comprehensive course covering modern web development technologies and best practices.',
-    current: false
+    startDate: '2022-09-01',
+    endDate: undefined,
+    description: 'Currently pursuing degree in Computer Science. Classes scheduled Sunday-Wednesday.',
+    current: true
   }
 ]
 
 export const skills: Skill[] = [
   // Frontend Skills
-  { id: '1', name: 'React', level: 95, category: 'frontend', icon: '⚛️' },
-  { id: '2', name: 'TypeScript', level: 90, category: 'frontend', icon: '📘' },
-  { id: '3', name: 'Next.js', level: 88, category: 'frontend', icon: '▲' },
-  { id: '4', name: 'Vue.js', level: 85, category: 'frontend', icon: '💚' },
-  { id: '5', name: 'TailwindCSS', level: 92, category: 'frontend', icon: '🎨' },
-  { id: '6', name: 'JavaScript', level: 95, category: 'frontend', icon: '🟨' },
+  { id: '1', name: 'Next.js', level: 95, category: 'frontend', icon: '▲' },
+  { id: '2', name: 'React', level: 95, category: 'frontend', icon: '⚛️' },
+  { id: '3', name: 'TypeScript', level: 90, category: 'frontend', icon: '📘' },
+  { id: '4', name: 'TailwindCSS', level: 92, category: 'frontend', icon: '🎨' },
+  { id: '5', name: 'Redux Toolkit', level: 88, category: 'frontend', icon: '🔄' },
+  { id: '6', name: 'RTK Query', level: 85, category: 'frontend', icon: '🔍' },
+  { id: '7', name: 'JavaScript', level: 95, category: 'frontend', icon: '🟨' },
   
   // Backend Skills
-  { id: '7', name: 'Node.js', level: 88, category: 'backend', icon: '🟢' },
-  { id: '8', name: 'Python', level: 80, category: 'backend', icon: '🐍' },
-  { id: '9', name: 'PostgreSQL', level: 85, category: 'backend', icon: '🐘' },
-  { id: '10', name: 'MongoDB', level: 82, category: 'backend', icon: '🍃' },
-  { id: '11', name: 'GraphQL', level: 78, category: 'backend', icon: '🔷' },
+  { id: '8', name: 'Node.js', level: 75, category: 'backend', icon: '🟢' },
+  { id: '9', name: 'Express.js', level: 70, category: 'backend', icon: '🚀' },
+  { id: '10', name: 'MongoDB', level: 72, category: 'backend', icon: '🍃' },
   
-  // Tools
-  { id: '12', name: 'Git', level: 90, category: 'tools', icon: '📚' },
-  { id: '13', name: 'Docker', level: 75, category: 'tools', icon: '🐳' },
-  { id: '14', name: 'AWS', level: 70, category: 'tools', icon: '☁️' },
-  { id: '15', name: 'Figma', level: 85, category: 'tools', icon: '🎨' }
+  // Tools & Libraries
+  { id: '11', name: 'Framer Motion', level: 88, category: 'tools', icon: '🎬' },
+  { id: '12', name: 'shadcn/ui', level: 90, category: 'tools', icon: '🎨' },
+  { id: '13', name: 'React Hook Form', level: 85, category: 'tools', icon: '📝' },
+  { id: '14', name: 'Lottie', level: 80, category: 'tools', icon: '✨' },
+  { id: '15', name: 'Git', level: 90, category: 'tools', icon: '📚' },
+  { id: '16', name: 'Figma', level: 85, category: 'tools', icon: '🎨' }
 ]
 
 export const contributions: Contribution[] = [
   {
     id: '1',
-    repository: 'react-awesome-components',
-    description: 'A collection of reusable React components with TypeScript support',
-    url: 'https://github.com/biplobmolla/react-awesome-components',
+    repository: 'marketplace-client',
+    description: 'University-focused job marketplace built with Next.js and TypeScript',
+    url: 'https://github.com/biplobmolla/marketplace-client',
     language: 'TypeScript',
-    stars: 245,
-    forks: 32
+    stars: 45,
+    forks: 12
   },
   {
     id: '2',
-    repository: 'nextjs-boilerplate',
-    description: 'Production-ready Next.js boilerplate with best practices',
-    url: 'https://github.com/biplobmolla/nextjs-boilerplate',
+    repository: 'ubaky-manager',
+    description: 'Restaurant management system with real-time order tracking',
+    url: 'https://github.com/biplobmolla/ubaky-manager',
     language: 'TypeScript',
-    stars: 189,
-    forks: 28
+    stars: 32,
+    forks: 8
   },
   {
     id: '3',
-    repository: 'tailwind-animations',
-    description: 'Custom TailwindCSS animation utilities and components',
-    url: 'https://github.com/biplobmolla/tailwind-animations',
-    language: 'CSS',
-    stars: 156,
-    forks: 19
+    repository: 'hackverse',
+    description: 'Hackathon platform with event management and participant registration',
+    url: 'https://github.com/biplobmolla/hackverse',
+    language: 'TypeScript',
+    stars: 28,
+    forks: 6
   },
   {
     id: '4',
-    repository: 'portfolio-template',
-    description: 'Modern portfolio website template with animations',
-    url: 'https://github.com/biplobmolla/portfolio-template',
+    repository: 'react-native-components',
+    description: 'Reusable React Native components library with TypeScript',
+    url: 'https://github.com/biplobmolla/react-native-components',
     language: 'TypeScript',
-    stars: 98,
-    forks: 15
+    stars: 18,
+    forks: 4
   }
 ]
 
 export const personalInfo = {
-  name: 'Biplob Molla',
+  name: 'MD. Biplob Molla',
   title: 'Frontend Developer',
-  subtitle: 'Creating beautiful, interactive web experiences',
-  bio: 'Passionate frontend developer with 5+ years of experience building modern web applications. I love creating intuitive user interfaces and smooth user experiences. When I\'m not coding, you can find me exploring new technologies, contributing to open source projects, or sharing knowledge with the developer community.',
+  subtitle: 'Creating beautiful, interactive web experiences with modern technologies',
+  bio: 'Passionate frontend developer with 2+ years of experience building modern web applications. I specialize in Next.js, React, TypeScript, and TailwindCSS. I have a strong interest in UI/UX design, business, AI & ML, and love to travel. Currently working as a Frontend Engineer at a startup while pursuing my Computer Science degree.',
   location: 'Dhaka, Bangladesh',
   email: 'biplob.molla@email.com',
-  phone: '+880 1234 567890',
+  phone: '+8801314886972',
   github: 'https://github.com/biplobmolla',
   linkedin: 'https://linkedin.com/in/biplobmolla',
   twitter: 'https://twitter.com/biplobmolla',
