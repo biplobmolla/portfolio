@@ -3,86 +3,146 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Briefcase, GraduationCap, Calendar, MapPin, Award } from 'lucide-react'
+import { MapPin, Calendar, Briefcase, TrendingUp, Code, Users } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
-import { experiences, education } from '@/data/portfolio'
+import { experiences } from '@/data/portfolio'
 
 export default function ExperienceSection() {
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+  }
+
+  const getDuration = (startDate: string, endDate?: string) => {
+    const start = new Date(startDate)
+    const end = endDate ? new Date(endDate) : new Date()
+    const diffTime = Math.abs(end.getTime() - start.getTime())
+    const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30))
+    
+    if (diffMonths < 12) {
+      return `${diffMonths} month${diffMonths > 1 ? 's' : ''}`
+    } else {
+      const years = Math.floor(diffMonths / 12)
+      const months = diffMonths % 12
+      return months > 0 ? `${years}y ${months}m` : `${years}y`
+    }
+  }
+
   return (
-    <section id="experience" className="py-20 bg-muted/50 w-full overflow-hidden">
+    <section id="experience" className="py-20 bg-muted/30 w-full overflow-hidden">
       <div className="container mx-auto px-4 w-full max-w-7xl">
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Experience & Education
+              Professional Experience
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              My professional journey and academic background
+              Building innovative solutions and leading frontend development across diverse projects
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Experience Section */}
-          <ScrollReveal>
-            <div className="space-y-8">
-              <div className="flex items-center space-x-3 mb-8">
-                <Briefcase className="h-6 w-6 text-primary" />
-                <h3 className="text-2xl font-semibold text-foreground">Work Experience</h3>
-              </div>
-              
-              <div className="space-y-6">
-                {experiences.map((experience, index) => (
-                  <motion.div
-                    key={experience.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
+        <div className="max-w-4xl mx-auto">
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary/20 hidden md:block" />
+            
+            <div className="space-y-12">
+              {experiences.map((exp, index) => (
+                <motion.div
+                  key={exp.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-6 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background hidden md:block z-10" />
+                  
+                  <div className="ml-0 md:ml-16">
                     <Card className="hover-lift group">
-                      <CardHeader>
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center space-x-3">
-                            <div className="p-2 bg-primary/10 rounded-lg">
-                              <Briefcase className="h-5 w-5 text-primary" />
+                      <CardHeader className="pb-4">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-3">
+                              <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                                {exp.position}
+                              </CardTitle>
+                              {exp.current && (
+                                <Badge variant="default" className="bg-green-500 text-white">
+                                  Current
+                                </Badge>
+                              )}
                             </div>
-                            <div>
-                              <CardTitle className="text-xl">{experience.position}</CardTitle>
-                              <CardDescription className="text-base font-medium">
-                                {experience.company}
-                              </CardDescription>
+                            <CardDescription className="text-lg font-semibold text-primary">
+                              {exp.company}
+                            </CardDescription>
+                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                              <div className="flex items-center gap-1">
+                                <MapPin className="h-4 w-4" />
+                                {exp.location}
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Calendar className="h-4 w-4" />
+                                {formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Present'}
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <TrendingUp className="h-4 w-4" />
+                                {getDuration(exp.startDate, exp.endDate)}
+                              </div>
                             </div>
-                          </div>
-                          <Badge variant={experience.current ? "default" : "secondary"}>
-                            {experience.current ? "Current" : "Past"}
-                          </Badge>
-                        </div>
-                        <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                          <div className="flex items-center space-x-1">
-                            <Calendar className="h-4 w-4" />
-                            <span>{experience.startDate} - {experience.endDate || 'Present'}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <MapPin className="h-4 w-4" />
-                            <span>Remote</span>
                           </div>
                         </div>
                       </CardHeader>
-                      <CardContent>
-                        <ul className="space-y-3 mb-6">
-                          {experience.description.map((desc, descIndex) => (
-                            <li key={descIndex} className="text-sm text-muted-foreground flex items-start">
-                              <span className="text-primary mr-2 mt-1">•</span>
-                              {desc}
-                            </li>
-                          ))}
-                        </ul>
-                        <div>
-                          <h4 className="text-sm font-semibold text-foreground mb-2">Technologies Used:</h4>
+                      
+                      <CardContent className="space-y-6">
+                        {/* Project Type */}
+                        <div className="flex items-center gap-2">
+                          <Briefcase className="h-4 w-4 text-primary" />
+                          <span className="text-sm font-medium text-muted-foreground">
+                            {exp.projectType}
+                          </span>
+                        </div>
+
+                        {/* Key Achievements */}
+                        <div className="space-y-3">
+                          <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
+                            <Code className="h-4 w-4 text-primary" />
+                            Key Achievements
+                          </h4>
+                          <ul className="space-y-2">
+                            {exp.description.map((desc, descIndex) => (
+                              <li key={descIndex} className="text-sm text-muted-foreground flex items-start gap-3">
+                                <span className="text-primary font-bold mt-1">•</span>
+                                <span>{desc}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Impact */}
+                        {exp.impact && (
+                          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
+                            <div className="flex items-start gap-3">
+                              <TrendingUp className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                              <div>
+                                <h4 className="text-sm font-semibold text-foreground mb-1">Impact</h4>
+                                <p className="text-sm text-muted-foreground">{exp.impact}</p>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Tech Stack */}
+                        <div className="space-y-3">
+                          <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
+                            <Users className="h-4 w-4 text-primary" />
+                            Technologies Used
+                          </h4>
                           <div className="flex flex-wrap gap-2">
-                            {experience.techStack.map((tech) => (
-                              <Badge key={tech} variant="outline" className="text-xs">
+                            {exp.techStack.map((tech) => (
+                              <Badge key={tech} variant="outline" className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors">
                                 {tech}
                               </Badge>
                             ))}
@@ -90,109 +150,36 @@ export default function ExperienceSection() {
                         </div>
                       </CardContent>
                     </Card>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </ScrollReveal>
-
-          {/* Education Section */}
-          <ScrollReveal delay={0.2}>
-            <div className="space-y-8">
-              <div className="flex items-center space-x-3 mb-8">
-                <GraduationCap className="h-6 w-6 text-primary" />
-                <h3 className="text-2xl font-semibold text-foreground">Education</h3>
-              </div>
-              
-              <div className="space-y-6">
-                {education.map((edu, index) => (
-                  <motion.div
-                    key={edu.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="hover-lift group">
-                      <CardHeader>
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center space-x-3">
-                            <div className="p-2 bg-primary/10 rounded-lg">
-                              <GraduationCap className="h-5 w-5 text-primary" />
-                            </div>
-                            <div>
-                              <CardTitle className="text-xl">{edu.degree}</CardTitle>
-                              <CardDescription className="text-base font-medium">
-                                {edu.institution}
-                              </CardDescription>
-                            </div>
-                          </div>
-                          <Badge variant={edu.current ? "default" : "secondary"}>
-                            {edu.current ? "Current" : "Completed"}
-                          </Badge>
-                        </div>
-                        <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                          <div className="flex items-center space-x-1">
-                            <Calendar className="h-4 w-4" />
-                            <span>{edu.startDate} - {edu.endDate || 'Present'}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <Award className="h-4 w-4" />
-                            <span>{edu.field}</span>
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        {edu.description && (
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            {edu.description}
-                          </p>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Additional Achievements */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <Card className="bg-gradient-to-r from-primary/5 to-purple-500/5 border-primary/20">
-                  <CardHeader>
-                    <div className="flex items-center space-x-3">
-                      <Award className="h-5 w-5 text-primary" />
-                      <CardTitle className="text-lg">Key Achievements</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2 mt-1">•</span>
-                        Developed 5+ production applications using modern web technologies
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2 mt-1">•</span>
-                        Gained hands-on experience with Redux Toolkit and RTK Query
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2 mt-1">•</span>
-                        Built responsive mobile applications with React Native
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary mr-2 mt-1">•</span>
-                        Maintained flexible work schedule while pursuing education
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
-          </ScrollReveal>
+          </div>
         </div>
+
+        {/* Stats Section */}
+        <ScrollReveal delay={0.3}>
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">
+                {experiences.length}+
+              </div>
+              <div className="text-sm text-muted-foreground">Projects Completed</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">
+                2+
+              </div>
+              <div className="text-sm text-muted-foreground">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">
+                5+
+              </div>
+              <div className="text-sm text-muted-foreground">Technologies Mastered</div>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )

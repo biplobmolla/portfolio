@@ -66,19 +66,91 @@ export const projects: Project[] = [
 export const experiences: Experience[] = [
   {
     id: '1',
-    company: 'Startup Company',
-    position: 'Frontend Engineer',
-    startDate: '2023-01-01',
+    company: 'Marketplace Client',
+    position: 'Frontend Engineer (Lead frontend)',
+    startDate: '2024-10-01',
     endDate: undefined,
+    location: 'Remote / Dhaka',
     description: [
-      'Developed modern web applications using Next.js and React',
-      'Implemented state management with Redux Toolkit and RTK Query',
-      'Created responsive UI components with TailwindCSS',
-      'Collaborated with backend team on API integration',
-      'Worked on multiple projects with flexible hours'
+      'Led frontend development using Next.js 15 (App Router), TypeScript, TailwindCSS v4, and Redux Toolkit; implemented modular component architecture and optimized bundle sizes',
+      'Designed and implemented job listing search, filtering, and tag-based ranking with RTK Query, improving search speed and UX',
+      'Built reusable dashboard components for students and employers, reducing new feature development time by ~35%',
+      'Implemented authentication flows and secure client-side session handling with JWT; collaborated with backend team for API contracts',
+      'Delivered responsive layouts and accessibility improvements (ARIA labels, keyboard navigation), increasing mobile retention and usability'
     ],
-    techStack: ['Next.js', 'React', 'TypeScript', 'Redux Toolkit', 'RTK Query', 'TailwindCSS'],
-    current: true
+    techStack: ['Next.js', 'TypeScript', 'TailwindCSS', 'Redux Toolkit', 'RTK Query', 'JWT'],
+    current: true,
+    projectType: 'University-focused job marketplace',
+    impact: 'Reduced frontend development time for new features by ~35% and improved mobile user engagement through performance and accessibility improvements'
+  },
+  {
+    id: '2',
+    company: 'Ubaky Manager',
+    position: 'Frontend Developer',
+    startDate: '2023-05-01',
+    endDate: '2024-09-30',
+    location: 'Dhaka',
+    description: [
+      'Implemented interactive dashboards and reservation flows using React and Redux Toolkit, improving manager workflow efficiency',
+      'Built complex forms and role-based UI with React Hook Form and client-side validation, reducing data entry errors by ~25%',
+      'Created real-time UI updates and notifications for order status and staff assignments',
+      'Integrated reporting charts and export features for daily sales and staff hours'
+    ],
+    techStack: ['React', 'Redux Toolkit', 'TailwindCSS', 'React Hook Form', 'Chart.js'],
+    current: false,
+    projectType: 'Restaurant management system',
+    impact: 'Reduced manual admin tasks and improved manager productivity; data-entry error rates decreased by ~25%'
+  },
+  {
+    id: '3',
+    company: 'Ubaky Driver App',
+    position: 'Mobile Frontend Developer',
+    startDate: '2023-01-01',
+    endDate: '2023-05-31',
+    location: 'Remote / Dhaka',
+    description: [
+      'Developed driver mobile app in React Native (Expo Bare Workflow) with offline-first behavior for intermittent connectivity',
+      'Implemented background location tracking, real-time order updates, and job queues; improved delivery ETA accuracy',
+      'Integrated EAS build and release pipelines; worked on performance optimizations for low-end devices'
+    ],
+    techStack: ['React Native', 'Expo', 'TypeScript', 'Redux Toolkit', 'EAS Build'],
+    current: false,
+    projectType: 'Delivery driver mobile application',
+    impact: 'Improved delivery reliability and reduced late deliveries via background updates and offline support'
+  },
+  {
+    id: '4',
+    company: 'Hackverse',
+    position: 'Fullstack/Frontend Developer',
+    startDate: '2022-08-01',
+    endDate: '2022-12-31',
+    location: 'Dhaka',
+    description: [
+      'Implemented frontend for registration, team formation, and event pages with React and modern UI libraries',
+      'Built admin tools for event organizers to manage participants and submissions',
+      'Implemented payment integration and secure checkout flows'
+    ],
+    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe', 'TailwindCSS'],
+    current: false,
+    projectType: 'Hackathon hosting and team-formation platform',
+    impact: 'Supported smooth event administration for multiple hackathons and streamlined team formation processes'
+  },
+  {
+    id: '5',
+    company: 'ICPC Regional Website',
+    position: 'Frontend Developer',
+    startDate: '2024-01-01',
+    endDate: '2024-04-30',
+    location: 'Dhaka',
+    description: [
+      'Built a performant registration portal and event information site using Next.js and optimized performance for high-traffic registration periods',
+      'Implemented payment flows, team dashboards, and confirmation email flows',
+      'Ensured reliability during peak registration; implemented monitoring and graceful error handling'
+    ],
+    techStack: ['Next.js', 'TypeScript', 'TailwindCSS', 'Stripe', 'Node.js'],
+    current: false,
+    projectType: 'ICPC regional website for programming contest',
+    impact: 'Sustained stable performance during high-traffic registration windows and supported 310+ team registrations'
   }
 ]
 
