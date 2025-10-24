@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion'
 import { Code, Sparkles, Zap } from 'lucide-react'
 
-export default function PageLoader() {
+export default function Loading() {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -48,44 +48,13 @@ export default function PageLoader() {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[
-          { left: 10, top: 20, delay: 0 },
-          { left: 20, top: 80, delay: 0.5 },
-          { left: 30, top: 40, delay: 1 },
-          { left: 40, top: 90, delay: 1.5 },
-          { left: 50, top: 10, delay: 2 },
-          { left: 60, top: 70, delay: 0.3 },
-          { left: 70, top: 30, delay: 1.2 },
-          { left: 80, top: 60, delay: 0.8 },
-          { left: 90, top: 15, delay: 1.8 },
-          { left: 15, top: 50, delay: 0.7 },
-          { left: 25, top: 85, delay: 1.3 },
-          { left: 35, top: 25, delay: 0.2 },
-          { left: 45, top: 75, delay: 1.7 },
-          { left: 55, top: 35, delay: 0.9 },
-          { left: 65, top: 95, delay: 1.1 },
-          { left: 75, top: 5, delay: 0.4 },
-          { left: 85, top: 55, delay: 1.6 },
-          { left: 95, top: 45, delay: 0.6 },
-          { left: 5, top: 65, delay: 1.4 },
-          { left: 12, top: 12, delay: 0.1 },
-          { left: 22, top: 88, delay: 1.9 },
-          { left: 32, top: 38, delay: 0.8 },
-          { left: 42, top: 68, delay: 1.2 },
-          { left: 52, top: 18, delay: 0.3 },
-          { left: 62, top: 78, delay: 1.5 },
-          { left: 72, top: 28, delay: 0.7 },
-          { left: 82, top: 58, delay: 1.1 },
-          { left: 92, top: 8, delay: 0.5 },
-          { left: 8, top: 48, delay: 1.3 },
-          { left: 18, top: 98, delay: 0.9 }
-        ].map((particle, i) => (
+        {[...Array(30)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full opacity-40"
             style={{
-              left: `${particle.left}%`,
-              top: `${particle.top}%`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
             }}
             animate={{
               y: [0, -100, 0],
@@ -93,9 +62,9 @@ export default function PageLoader() {
               scale: [0, 1, 0],
             }}
             transition={{
-              duration: 3 + (i % 3) * 0.5,
+              duration: 3 + Math.random() * 2,
               repeat: Infinity,
-              delay: particle.delay,
+              delay: Math.random() * 2,
             }}
           />
         ))}
