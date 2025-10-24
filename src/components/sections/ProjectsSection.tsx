@@ -34,7 +34,7 @@ export default function ProjectsSection() {
                 transition={{ duration: 0.3 }}
                 className="h-full"
               >
-                <Card className="h-full hover-lift group cursor-pointer border-2 border-transparent hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+                <Card className="h-full hover-lift group cursor-pointer border-2 border-transparent hover:border-primary/20 shadow-lg hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
                   <CardHeader>
                     <div className="aspect-video bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -63,30 +63,20 @@ export default function ProjectsSection() {
                         </Badge>
                       )}
                     </div>
-                    <div className="flex gap-2">
-                      {project.liveUrl && (
-                        <Button size="sm" variant="default" asChild className="flex-1">
-                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            Live Demo
-                          </a>
-                        </Button>
-                      )}
-                      {project.githubUrl && (
-                        <Button size="sm" variant="outline" asChild className="flex-1">
-                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                            <Github className="h-4 w-4 mr-2" />
-                            Code
-                          </a>
-                        </Button>
-                      )}
-                    </div>
+                    {project.liveUrl && (
+                      <Button size="sm" variant="default" asChild className="w-full hover:scale-105 transition-transform duration-200">
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    )}
                     
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button 
-                          variant="ghost" 
-                          className="w-full"
+                          variant="secondary" 
+                          className="w-full bg-gray-400 hover:bg-gray-600 text-white hover:text-white transition-all duration-200 hover:scale-105"
                         >
                           View Details
                         </Button>
@@ -117,24 +107,14 @@ export default function ProjectsSection() {
                             </div>
                           </div>
                           
-                          <div className="flex gap-3">
-                            {project.liveUrl && (
-                              <Button asChild className="flex-1">
-                                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                  <ExternalLink className="h-4 w-4 mr-2" />
-                                  View Live
-                                </a>
-                              </Button>
-                            )}
-                            {project.githubUrl && (
-                              <Button variant="outline" asChild className="flex-1">
-                                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                                  <Github className="h-4 w-4 mr-2" />
-                                  View Code
-                                </a>
-                              </Button>
-                            )}
-                          </div>
+                          {project.liveUrl && (
+                            <Button asChild className="w-full hover:scale-105 transition-transform duration-200">
+                              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="h-4 w-4 mr-2" />
+                                View Live
+                              </a>
+                            </Button>
+                          )}
                         </div>
                       </DialogContent>
                     </Dialog>
