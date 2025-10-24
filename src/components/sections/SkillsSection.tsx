@@ -2,7 +2,18 @@
 
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Code, Database, Wrench, Palette, Zap } from 'lucide-react'
+import { 
+  Code, 
+  Database, 
+  Palette, 
+  GitBranch,
+  Globe,
+  Layers,
+  Zap,
+  Server,
+  FileText,
+  Box
+} from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { skills } from '@/data/portfolio'
 
@@ -10,75 +21,87 @@ export default function SkillsSection() {
   const skillCategories = {
     frontend: skills.filter(skill => skill.category === 'frontend'),
     backend: skills.filter(skill => skill.category === 'backend'),
-    tools: skills.filter(skill => skill.category === 'tools'),
   }
 
   const categoryIcons = {
     frontend: Code,
     backend: Database,
-    tools: Wrench
   }
 
-  const categoryDescriptions = {
-    frontend: 'Modern frontend technologies for building responsive and interactive user interfaces',
-    backend: 'Backend technologies and databases for server-side development and data management',
-    tools: 'Development tools, libraries, and platforms that enhance productivity and workflow'
+  const getSkillIcon = (skillName: string) => {
+    const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
+      'Next.js': Globe,
+      'React': Zap,
+      'TypeScript': FileText,
+      'TailwindCSS': Palette,
+      'Redux Toolkit': Layers,
+      'RTK Query': GitBranch,
+      'JavaScript': Code,
+      'Node.js': Server,
+      'Express.js': Box,
+      'MongoDB': Database
+    }
+    return iconMap[skillName] || Code
   }
 
   return (
-    <section id="skills" className="py-20 bg-muted/30 w-full overflow-hidden">
-      <div className="container mx-auto px-4 w-full max-w-7xl">
+    <section id="skills" className="py-20 bg-background w-full overflow-hidden">
+      <div className="container mx-auto px-4 w-full max-w-4xl">
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Skills & Expertise
+              Skills & Technologies
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Technologies and tools I use to bring ideas to life
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Technologies and tools I use to build modern applications
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {Object.entries(skillCategories).map(([category, categorySkills], categoryIndex) => {
             const IconComponent = categoryIcons[category as keyof typeof categoryIcons]
             return (
               <ScrollReveal key={category} delay={categoryIndex * 0.2}>
-                <Card className="hover-lift h-full">
+                <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
                   <CardHeader>
-                    <CardTitle className="flex items-center space-x-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
+                    <CardTitle className="flex items-center space-x-3 text-xl mb-2">
+                      <div className="p-3 bg-primary/10 rounded-lg">
                         <IconComponent className="h-6 w-6 text-primary" />
                       </div>
-                      <div>
-                        <span className="capitalize">{category} Skills</span>
-                        <p className="text-sm text-muted-foreground font-normal mt-1">
-                          {categoryDescriptions[category as keyof typeof categoryDescriptions]}
-                        </p>
-                      </div>
+                      <span className="capitalize">{category} Development</span>
                     </CardTitle>
+                    <p className="text-sm text-muted-foreground ml-12">
+                      {category === 'frontend' 
+                        ? 'Modern frontend technologies for building responsive user interfaces'
+                        : 'Backend technologies for server-side development and data management'
+                      }
+                    </p>
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-2 gap-3">
-                      {categorySkills.map((skill, index) => (
-                        <motion.div
-                          key={skill.id}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                          className="group"
-                        >
-                          <div className="flex flex-col items-center p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-all duration-300 hover:scale-105">
-                            <span className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                              {skill.icon}
-                            </span>
-                            <span className="text-sm font-medium text-foreground text-center">
-                              {skill.name}
-                            </span>
-                          </div>
-                        </motion.div>
-                      ))}
+                      {categorySkills.map((skill, index) => {
+                        const SkillIcon = getSkillIcon(skill.name)
+                        return (
+                          <motion.div
+                            key={skill.id}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            className="group"
+                          >
+                            <div className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-all duration-300 hover:scale-105 border border-transparent hover:border-primary/20">
+                              <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
+                                <SkillIcon className="h-5 w-5 text-primary" />
+                              </div>
+                              <span className="text-sm font-medium text-foreground">
+                                {skill.name}
+                              </span>
+                            </div>
+                          </motion.div>
+                        )
+                      })}
                     </div>
                   </CardContent>
                 </Card>
@@ -87,86 +110,7 @@ export default function SkillsSection() {
           })}
         </div>
 
-        {/* Skills Overview */}
-        <ScrollReveal delay={0.6}>
-          <div className="mt-16">
-            <Card className="hover-lift">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-3">
-                  <Zap className="h-6 w-6 text-primary" />
-                  <span>Technical Expertise</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="text-center">
-                    <div className="p-4 bg-primary/10 rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                      <Code className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="font-semibold text-foreground mb-2">Frontend Development</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Modern React ecosystem, responsive design, and user experience optimization
-                    </p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="p-4 bg-primary/10 rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                      <Database className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="font-semibold text-foreground mb-2">Backend Development</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Server-side logic, API development, and database management
-                    </p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="p-4 bg-primary/10 rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                      <Palette className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="font-semibold text-foreground mb-2">UI/UX Design</h3>
-                    <p className="text-sm text-muted-foreground">
-                      User interface design, accessibility, and design system implementation
-                    </p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="p-4 bg-primary/10 rounded-full w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                      <Wrench className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="font-semibold text-foreground mb-2">Development Tools</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Version control, testing, deployment, and development workflow optimization
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </ScrollReveal>
-
-        {/* Stats */}
-        <ScrollReveal delay={0.8}>
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">2+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">15+</div>
-              <div className="text-sm text-muted-foreground">Projects Completed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">20+</div>
-              <div className="text-sm text-muted-foreground">Technologies</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">100%</div>
-              <div className="text-sm text-muted-foreground">Client Satisfaction</div>
-            </div>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   )
 }
-

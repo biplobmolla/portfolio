@@ -25,13 +25,13 @@ const ExperienceSection = dynamic(() => import('@/components/sections/Experience
   loading: () => <div className="h-96 bg-muted animate-pulse" />
 })
 
-const ContributionsSection = dynamic(() => import('@/components/sections/ContributionsSection'), {
-  loading: () => <div className="h-96 bg-muted animate-pulse" />
-})
+// const ContributionsSection = dynamic(() => import('@/components/sections/ContributionsSection'), {
+//   loading: () => <div className="h-96 bg-muted animate-pulse" />
+// })
 
-const ContactSection = dynamic(() => import('@/components/sections/ContactSection'), {
-  loading: () => <div className="h-96 bg-muted animate-pulse" />
-})
+// const ContactSection = dynamic(() => import('@/components/sections/ContactSection'), {
+//   loading: () => <div className="h-96 bg-muted animate-pulse" />
+// })
 
 export default function Home() {
   return (
@@ -56,13 +56,13 @@ export default function Home() {
         <ExperienceSection />
       </Suspense>
       
-      <Suspense fallback={<div className="h-96 bg-muted animate-pulse" />}>
+      {/* <Suspense fallback={<div className="h-96 bg-muted animate-pulse" />}>
         <ContributionsSection />
-      </Suspense>
+      </Suspense> */}
       
-      <Suspense fallback={<div className="h-96 bg-muted animate-pulse" />}>
+      {/* <Suspense fallback={<div className="h-96 bg-muted animate-pulse" />}>
         <ContactSection />
-      </Suspense>
+      </Suspense> */}
     </div>
   )
 }
