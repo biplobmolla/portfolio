@@ -1,249 +1,243 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Sparkles, Zap } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Terminal, Code2, Cpu, Zap } from 'lucide-react'
+
+const codeLines = [
+  'const portfolio = {',
+  '  name: "Biplob Molla",',
+  '  role: "Frontend Developer",',
+  '  skills: ["React", "Next.js", "TypeScript"],',
+  '  status: "Loading..."',
+  '};',
+]
 
 export default function Loading() {
+  const [currentLine, setCurrentLine] = useState(0)
+  const [displayedText, setDisplayedText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
+
+  useEffect(() => {
+    if (currentLine >= codeLines.length) {
+      setIsTyping(false)
+      return
+    }
+
+    const line = codeLines[currentLine]
+    let charIndex = 0
+    setDisplayedText('')
+
+    const typingInterval = setInterval(() => {
+      if (charIndex < line.length) {
+        setDisplayedText(line.slice(0, charIndex + 1))
+        charIndex++
+      } else {
+        clearInterval(typingInterval)
+        setTimeout(() => {
+          setCurrentLine((prev) => prev + 1)
+        }, 500)
+      }
+    }, 50)
+
+    return () => clearInterval(typingInterval)
+  }, [currentLine])
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-40 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -180, -360],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] text-green-400 font-mono overflow-hidden">
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }} />
       </div>
 
-      {/* Floating Particles */}
+      {/* Floating Code Symbols */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {['{', '}', '[', ']', '(', ')', '<', '>', ';', '='].map((symbol, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-40"
+            className="absolute text-green-500/20 text-4xl font-bold"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${10 + (i * 8)}%`,
+              top: `${10 + (i * 7)}%`,
             }}
             animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
+              y: [0, -30, 0],
+              opacity: [0.1, 0.3, 0.1],
+              rotate: [0, 180, 360],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 4 + (i % 3),
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: i * 0.2,
+              ease: "easeInOut"
             }}
-          />
+          >
+            {symbol}
+          </motion.div>
         ))}
       </div>
 
-      {/* Main Loader Content */}
-      <div className="relative z-10 text-center">
-        {/* Logo/Initials with Enhanced Animation */}
+      {/* Main Content */}
+      <div className="relative z-10 w-full max-w-2xl px-8">
+        {/* Terminal Window */}
         <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ 
-            duration: 1, 
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 200,
-            damping: 20
-          }}
-          className="mb-8"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="bg-[#1a1a1a] border border-green-500/30 rounded-lg shadow-2xl overflow-hidden"
         >
-          <div className="relative">
-            <motion.div
-              className="w-20 h-20 mx-auto bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-full flex items-center justify-center shadow-2xl"
-              animate={{
-                boxShadow: [
-                  "0 0 20px rgba(59, 130, 246, 0.5)",
-                  "0 0 40px rgba(147, 51, 234, 0.8)",
-                  "0 0 20px rgba(236, 72, 153, 0.5)",
-                ]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <motion.span 
-                className="text-2xl font-bold text-white"
-                animate={{ 
-                  textShadow: [
-                    "0 0 10px rgba(255, 255, 255, 0.5)",
-                    "0 0 20px rgba(255, 255, 255, 0.8)",
-                    "0 0 10px rgba(255, 255, 255, 0.5)",
-                  ]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                BM
-              </motion.span>
-            </motion.div>
-            
-            {/* Rotating Ring */}
-            <motion.div
-              className="absolute inset-0 border-2 border-transparent border-t-blue-400 rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
+          {/* Terminal Header */}
+          <div className="flex items-center gap-2 px-4 py-3 bg-[#0f0f0f] border-b border-green-500/20">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500/80" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+              <div className="w-3 h-3 rounded-full bg-green-500/80" />
+            </div>
+            <div className="flex items-center gap-2 ml-4">
+              <Terminal className="w-4 h-4 text-green-400" />
+              <span className="text-xs text-green-400/70">portfolio-terminal</span>
+            </div>
+          </div>
+
+          {/* Terminal Body */}
+          <div className="p-6 min-h-[300px]">
+            {/* Prompt */}
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-green-400">$</span>
+              <span className="text-green-400/70">biplob@portfolio</span>
+              <span className="text-green-400/50">:</span>
+              <span className="text-green-400/70">~</span>
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+                className="w-2 h-5 bg-green-400 inline-block"
+              />
+            </div>
+
+            {/* Code Display */}
+            <div className="space-y-2 font-mono text-sm">
+              {codeLines.slice(0, currentLine).map((line, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="text-green-400/90"
+                >
+                  <span className="text-green-500/50 mr-2">{index + 1}</span>
+                  {line}
+                </motion.div>
+              ))}
+              
+              {isTyping && currentLine < codeLines.length && (
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="text-green-400"
+                >
+                  <span className="text-green-500/50 mr-2">{currentLine + 1}</span>
+                  {displayedText}
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+                    className="inline-block w-2 h-4 bg-green-400 ml-1"
+                  />
+                </motion.div>
+              )}
+
+              {!isTyping && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-6 flex items-center gap-2 text-green-400/70"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  >
+                    <Cpu className="w-4 h-4" />
+                  </motion.div>
+                  <span>Initializing portfolio...</span>
+                </motion.div>
+              )}
+            </div>
           </div>
         </motion.div>
 
-        {/* Animated Icons */}
+        {/* Animated Icons Below Terminal */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex justify-center space-x-4 mb-6"
+          transition={{ delay: 0.8, duration: 0.6 }}
+          className="flex justify-center gap-8 mt-8"
         >
-          <motion.div
-            animate={{ 
-              rotate: [0, 360],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <Code className="h-8 w-8 text-blue-400" />
-          </motion.div>
-          
-          <motion.div
-            animate={{ 
-              rotate: [0, -360],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <Zap className="h-8 w-8 text-purple-400" />
-          </motion.div>
-          
-          <motion.div
-            animate={{ 
-              rotate: [0, 360],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <Sparkles className="h-8 w-8 text-pink-400" />
-          </motion.div>
-        </motion.div>
-
-        {/* Progress Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="w-80 mx-auto mb-6"
-        >
-          <div className="w-full bg-gray-700/50 rounded-full h-2 overflow-hidden backdrop-blur-sm">
+          {[
+            { Icon: Code2, color: 'text-blue-400', delay: 0 },
+            { Icon: Zap, color: 'text-yellow-400', delay: 0.2 },
+            { Icon: Cpu, color: 'text-purple-400', delay: 0.4 },
+            { Icon: Terminal, color: 'text-green-400', delay: 0.6 },
+          ].map(({ Icon, color, delay }, index) => (
             <motion.div
-              className="h-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-full"
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ 
-                duration: 3, 
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "reverse"
+              key={index}
+              animate={{
+                y: [0, -10, 0],
+                scale: [1, 1.1, 1],
               }}
-            />
-          </div>
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: delay,
+                ease: "easeInOut"
+              }}
+            >
+              <Icon className={`w-6 h-6 ${color}`} />
+            </motion.div>
+          ))}
         </motion.div>
 
-        {/* Loading Text with Typewriter Effect */}
+        {/* Progress Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="space-y-2"
+          transition={{ delay: 1 }}
+          className="mt-6 flex justify-center"
         >
-          <motion.p
-            className="text-white text-lg font-medium"
-            animate={{ 
-              opacity: [0.5, 1, 0.5]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            Crafting Digital Experiences
-          </motion.p>
-          
-          <motion.p
-            className="text-gray-400 text-sm"
-            animate={{ 
-              opacity: [0.3, 0.8, 0.3]
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            Loading amazing content...
-          </motion.p>
+          <div className="flex gap-1">
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                className="w-2 h-2 rounded-full bg-green-400"
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent pointer-events-none" />
+      {/* Scanline Effect */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(transparent 50%, rgba(34, 197, 94, 0.03) 50%)',
+          backgroundSize: '100% 4px',
+        }}
+        animate={{ y: [0, 4, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+      />
     </div>
   )
 }
