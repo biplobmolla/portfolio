@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, Calendar, Briefcase, TrendingUp, Code, Users } from 'lucide-react'
+import { MapPin, Calendar, Briefcase, TrendingUp, Code, Users, Terminal } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { experiences } from '@/data/portfolio'
 
@@ -29,15 +29,20 @@ export default function ExperienceSection() {
   }
 
   return (
-    <section id="experience" className="py-20 bg-muted/30 w-full overflow-hidden">
+    <section id="experience" className="py-20 dark:bg-[#0a0a0a] light:bg-[#fafafa] w-full overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-4 w-full max-w-7xl">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 rounded-lg font-mono text-sm mb-4">
+              <Terminal className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+              <span className="dark:text-green-500/70 light:text-blue-500/70">$</span>
+              <span className="dark:text-green-400 light:text-blue-600">history</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold dark:text-green-400 light:text-blue-600 mb-4 font-mono terminal-text">
               Professional Experience
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Building innovative solutions and leading frontend development across diverse projects
+            <p className="text-xl dark:text-green-500/70 light:text-blue-500/70 max-w-3xl mx-auto font-mono">
+              // Building innovative solutions and leading frontend development
             </p>
           </div>
         </ScrollReveal>
@@ -45,7 +50,7 @@ export default function ExperienceSection() {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary/20 hidden md:block" />
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 dark:bg-gradient-to-b dark:from-green-500 dark:via-green-500/50 dark:to-green-500/20 light:bg-gradient-to-b light:from-blue-500 light:via-blue-500/50 light:to-blue-500/20 hidden md:block" />
             
             <div className="space-y-12">
               {experiences.map((exp, index) => (
@@ -58,27 +63,27 @@ export default function ExperienceSection() {
                   className="relative"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-6 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background hidden md:block z-10" />
+                  <div className="absolute left-6 top-8 w-4 h-4 dark:bg-green-500 light:bg-blue-500 rounded-full border-4 dark:border-[#0a0a0a] light:border-[#fafafa] hidden md:block z-10 terminal-glow" />
                   
                   <div className="ml-0 md:ml-16">
-                    <Card className="hover-lift group">
+                    <Card className="dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:border-green-500/50 light:hover:border-blue-500/50 group terminal-glow transition-all">
                       <CardHeader className="pb-4">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                           <div className="space-y-2">
                             <div className="flex items-center gap-3">
-                              <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                              <CardTitle className="text-xl font-bold dark:text-green-400 light:text-blue-600 dark:group-hover:text-green-300 light:group-hover:text-blue-500 transition-colors font-mono">
                                 {exp.position}
                               </CardTitle>
                               {exp.current && (
-                                <Badge variant="default" className="bg-green-500 text-white">
+                                <Badge variant="outline" className="dark:bg-green-500/20 light:bg-blue-500/20 dark:text-green-400 light:text-blue-600 dark:border-green-500/30 light:border-blue-500/30 font-mono">
                                   Current
                                 </Badge>
                               )}
                             </div>
-                            <CardDescription className="text-lg font-semibold text-primary">
+                            <CardDescription className="text-lg font-semibold dark:text-green-500/80 light:text-blue-600/80 font-mono">
                               {exp.company}
                             </CardDescription>
-                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-4 text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">
                               <div className="flex items-center gap-1">
                                 <MapPin className="h-4 w-4" />
                                 {exp.location}
@@ -99,22 +104,22 @@ export default function ExperienceSection() {
                       <CardContent className="space-y-6">
                         {/* Project Type */}
                         <div className="flex items-center gap-2">
-                          <Briefcase className="h-4 w-4 text-primary" />
-                          <span className="text-sm font-medium text-muted-foreground">
-                            {exp.projectType}
+                          <Briefcase className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+                          <span className="text-sm font-medium dark:text-green-500/70 light:text-blue-500/70 font-mono">
+                            // {exp.projectType}
                           </span>
                         </div>
 
                         {/* Key Achievements */}
                         <div className="space-y-3">
-                          <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
-                            <Code className="h-4 w-4 text-primary" />
-                            Key Achievements
+                          <h4 className="text-sm font-semibold dark:text-green-400 light:text-blue-600 flex items-center gap-2 font-mono">
+                            <Code className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+                            // Key Achievements
                           </h4>
                           <ul className="space-y-2">
                             {exp.description.map((desc, descIndex) => (
-                              <li key={descIndex} className="text-sm text-muted-foreground flex items-start gap-3">
-                                <span className="text-primary font-bold mt-1">•</span>
+                              <li key={descIndex} className="text-sm dark:text-green-500/80 light:text-blue-600/80 flex items-start gap-3 font-mono">
+                                <span className="dark:text-green-400 light:text-blue-600 font-bold mt-1">•</span>
                                 <span>{desc}</span>
                               </li>
                             ))}
@@ -123,12 +128,12 @@ export default function ExperienceSection() {
 
                         {/* Impact */}
                         {exp.impact && (
-                          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
+                          <div className="dark:bg-green-500/5 light:bg-blue-500/5 border dark:border-green-500/20 light:border-blue-500/20 rounded-lg p-4">
                             <div className="flex items-start gap-3">
-                              <TrendingUp className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                              <TrendingUp className="h-5 w-5 dark:text-green-400 light:text-blue-600 mt-0.5 flex-shrink-0" />
                               <div>
-                                <h4 className="text-sm font-semibold text-foreground mb-1">Impact</h4>
-                                <p className="text-sm text-muted-foreground">{exp.impact}</p>
+                                <h4 className="text-sm font-semibold dark:text-green-400 light:text-blue-600 mb-1 font-mono">// Impact</h4>
+                                <p className="text-sm dark:text-green-500/80 light:text-blue-600/80 font-mono">{exp.impact}</p>
                               </div>
                             </div>
                           </div>
@@ -136,13 +141,13 @@ export default function ExperienceSection() {
 
                         {/* Tech Stack */}
                         <div className="space-y-3">
-                          <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
-                            <Users className="h-4 w-4 text-primary" />
-                            Technologies Used
+                          <h4 className="text-sm font-semibold dark:text-green-400 light:text-blue-600 flex items-center gap-2 font-mono">
+                            <Users className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+                            // Technologies Used
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {exp.techStack.map((tech) => (
-                              <Badge key={tech} variant="outline" className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors">
+                              <Badge key={tech} variant="outline" className="text-xs dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 dark:hover:bg-green-500/10 light:hover:bg-blue-500/10 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-colors font-mono">
                                 {tech}
                               </Badge>
                             ))}
@@ -160,23 +165,23 @@ export default function ExperienceSection() {
         {/* Stats Section */}
         <ScrollReveal delay={0.3}>
           <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">
+            <div className="text-center p-6 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/20 light:border-blue-500/20 rounded-lg">
+              <div className="text-3xl font-bold dark:text-green-400 light:text-blue-600 mb-2 font-mono">
                 {experiences.length}+
               </div>
-              <div className="text-sm text-muted-foreground">Projects Completed</div>
+              <div className="text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">Projects Completed</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">
+            <div className="text-center p-6 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/20 light:border-blue-500/20 rounded-lg">
+              <div className="text-3xl font-bold dark:text-green-400 light:text-blue-600 mb-2 font-mono">
                 2+
               </div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
+              <div className="text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">Years Experience</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">
+            <div className="text-center p-6 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/20 light:border-blue-500/20 rounded-lg">
+              <div className="text-3xl font-bold dark:text-green-400 light:text-blue-600 mb-2 font-mono">
                 5+
               </div>
-              <div className="text-sm text-muted-foreground">Technologies Mastered</div>
+              <div className="text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">Technologies Mastered</div>
             </div>
           </div>
         </ScrollReveal>

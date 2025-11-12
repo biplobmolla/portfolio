@@ -1,9 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ChevronDown, MapPin, Download, ExternalLink } from 'lucide-react'
+import { ChevronDown, MapPin, Download, ExternalLink, Terminal, Code2, Zap, Cpu } from 'lucide-react'
 import Typewriter from '@/components/animations/Typewriter'
-import ParticleBackground from '@/components/animations/ParticleBackground'
 import { personalInfo } from '@/data/portfolio'
 
 export default function HeroSection() {
@@ -15,34 +14,75 @@ export default function HeroSection() {
   }
 
   const keySkills = [
-    'Next.js (App Router)',
+    'Next.js',
     'React 19',
     'TypeScript',
-    'TailwindCSS v4',
+    'TailwindCSS',
     'Redux Toolkit',
     'RTK Query'
   ]
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden w-full pt-16">
-      {/* Animated Background */}
-      <ParticleBackground />
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-purple-900/80 to-slate-900/90 z-10"></div>
-      
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden w-full pt-16 dark:bg-[#0a0a0a] light:bg-[#fafafa] transition-colors duration-300">
+      {/* Floating Code Symbols */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {['{', '}', '[', ']', '(', ')', '<', '>', ';', '=', '=>', '()'].map((symbol, i) => (
+          <motion.div
+            key={i}
+            className="absolute dark:text-green-500/10 light:text-blue-500/10 text-6xl font-bold font-mono"
+            style={{
+              left: `${5 + (i * 8)}%`,
+              top: `${10 + (i * 6)}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.05, 0.15, 0.05],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 8 + (i % 4),
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeInOut"
+            }}
+          >
+            {symbol}
+          </motion.div>
+        ))}
+      </div>
+
       {/* Main Content */}
       <div className="container mx-auto px-4 relative z-20 w-full max-w-7xl h-full flex items-center">
         <div className="text-center w-full">
-          {/* Greeting */}
+          {/* Terminal Prompt */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-3"
+            className="mb-6"
           >
-            <p className="text-base md:text-lg text-blue-400 font-medium drop-shadow-lg">
-              Hello, I&apos;m
+            <div className="inline-flex items-center gap-2 px-4 py-2 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 rounded-lg font-mono text-sm">
+              <Terminal className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+              <span className="dark:text-green-500/70 light:text-blue-500/70">biplob@portfolio</span>
+              <span className="dark:text-green-500/50 light:text-blue-500/50">:</span>
+              <span className="dark:text-green-400 light:text-blue-600">~</span>
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+                className="w-2 h-4 dark:bg-green-400 light:bg-blue-600 inline-block ml-2"
+              />
+            </div>
+          </motion.div>
+
+          {/* Greeting */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-4"
+          >
+            <p className="text-base md:text-lg dark:text-green-500/70 light:text-blue-500/70 font-mono">
+              $ echo &quot;Hello, I&apos;m&quot;
             </p>
           </motion.div>
 
@@ -50,13 +90,11 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-4"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-6"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-2 leading-tight drop-shadow-2xl">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
-                {personalInfo.name}
-              </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold dark:text-green-400 light:text-blue-600 mb-2 leading-tight font-mono terminal-text">
+              {personalInfo.name}
             </h1>
           </motion.div>
 
@@ -64,36 +102,37 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-6"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mb-8"
           >
-            <div className="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-3 drop-shadow-lg">
-              <span className="text-gray-300">I&apos;m a </span>
+            <div className="text-xl md:text-2xl lg:text-3xl dark:text-green-500/70 light:text-blue-500/70 mb-4 font-mono">
+              <span className="dark:text-green-500/50 light:text-blue-500/50">const role = </span>
               <Typewriter
                 texts={[
-                  'Frontend Developer',
-                  'Next.js Specialist',
-                  'React Expert',
-                  'TypeScript Enthusiast',
-                  'UI/UX Designer',
-                  'Problem Solver'
+                  '"Frontend Developer"',
+                  '"Next.js Specialist"',
+                  '"React Expert"',
+                  '"TypeScript Enthusiast"',
+                  '"UI/UX Designer"',
+                  '"Problem Solver"'
                 ]}
                 speed={80}
                 deleteSpeed={40}
                 pauseTime={2500}
-                className="text-gradient font-semibold"
+                className="dark:text-green-400 light:text-blue-600 font-semibold"
               />
+              <span className="dark:text-green-500/50 light:text-blue-500/50">;</span>
             </div>
           </motion.div>
 
-          {/* Key Skills */}
+          {/* Key Skills - Terminal Tags */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-6"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mb-8"
           >
-            <p className="text-sm md:text-base text-gray-300 mb-3 drop-shadow-lg">Specialized in:</p>
+            <p className="text-sm md:text-base dark:text-green-500/60 light:text-blue-500/60 mb-4 font-mono">// Tech Stack</p>
             <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
               {keySkills.map((skill, index) => (
                 <motion.span
@@ -102,9 +141,9 @@ export default function HeroSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ 
                     duration: 0.5, 
-                    delay: 0.8 + (index * 0.1) 
+                    delay: 1 + (index * 0.1) 
                   }}
-                  className="px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-xs md:text-sm text-white hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:shadow-xl hover:border-blue-400/50"
+                  className="px-4 py-2 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 rounded text-xs md:text-sm dark:text-green-400 light:text-blue-600 dark:hover:bg-green-500/10 light:hover:bg-blue-500/10 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-all duration-300 font-mono terminal-glow"
                 >
                   {skill}
                 </motion.span>
@@ -116,27 +155,27 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="flex items-center justify-center gap-2 text-gray-300 mb-6 drop-shadow-lg"
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="flex items-center justify-center gap-2 dark:text-green-500/70 light:text-blue-500/70 mb-8 font-mono text-sm"
           >
-            <MapPin className="h-3 w-3 md:h-4 md:w-4" />
-            <span className="text-xs md:text-sm">{personalInfo.location}</span>
+            <MapPin className="h-4 w-4" />
+            <span>{personalInfo.location}</span>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
             className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-8"
           >
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToNext()}
-              className="group px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 flex items-center gap-2 text-sm md:text-base"
+              className="group px-6 py-3 dark:bg-green-500/10 light:bg-blue-500/10 border-2 dark:border-green-500/50 light:border-blue-500/50 dark:text-green-400 light:text-blue-600 rounded-lg font-mono dark:hover:bg-green-500/20 light:hover:bg-blue-500/20 dark:hover:border-green-500 light:hover:border-blue-500 transition-all duration-300 terminal-glow flex items-center gap-2 text-sm md:text-base"
             >
-              <span>View My Work</span>
+              <span>$ view-work</span>
               <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </motion.button>
             
@@ -149,24 +188,55 @@ export default function HeroSection() {
                   contactSection.scrollIntoView({ behavior: 'smooth' })
                 }
               }}
-              className="group px-6 py-3 border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-white/25 flex items-center gap-2 text-sm md:text-base"
+              className="group px-6 py-3 border-2 dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 rounded-lg font-mono dark:hover:bg-green-500/10 light:hover:bg-blue-500/10 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-all duration-300 flex items-center gap-2 text-sm md:text-base"
             >
-              <span>Get In Touch</span>
+              <span>$ contact</span>
               <Download className="h-4 w-4 group-hover:translate-y-1 transition-transform" />
             </motion.button>
+          </motion.div>
+
+          {/* Animated Icons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.6, duration: 0.6 }}
+            className="flex justify-center gap-8 mb-8"
+          >
+            {[
+              { Icon: Code2, darkColor: 'text-blue-400', lightColor: 'text-blue-600', delay: 0 },
+              { Icon: Zap, darkColor: 'text-yellow-400', lightColor: 'text-yellow-600', delay: 0.2 },
+              { Icon: Cpu, darkColor: 'text-purple-400', lightColor: 'text-purple-600', delay: 0.4 },
+              { Icon: Terminal, darkColor: 'text-green-400', lightColor: 'text-blue-600', delay: 0.6 },
+            ].map(({ Icon, darkColor, lightColor, delay }, index) => (
+              <motion.div
+                key={index}
+                animate={{
+                  y: [0, -10, 0],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: delay,
+                  ease: "easeInOut"
+                }}
+              >
+                <Icon className={`w-6 h-6 ${darkColor} ${lightColor}`} />
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
+            transition={{ duration: 1, delay: 1.8 }}
             className="flex flex-col items-center"
           >
-            <p className="text-xs text-gray-300 mb-2 drop-shadow-lg">Scroll to explore</p>
+            <p className="text-xs dark:text-green-500/50 light:text-blue-500/50 mb-2 font-mono">// scroll to explore</p>
             <motion.button
               onClick={scrollToNext}
-              className="text-white/70 hover:text-white transition-colors group"
+              className="dark:text-green-500/50 light:text-blue-500/50 dark:hover:text-green-400 light:hover:text-blue-600 transition-colors group"
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -177,29 +247,6 @@ export default function HeroSection() {
             </motion.button>
           </motion.div>
         </div>
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-blue-400/30 rounded-full"
-            style={{
-              left: `${20 + (i * 15)}%`,
-              top: `${30 + (i * 10)}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 3 + i,
-              repeat: Infinity,
-              delay: i * 0.5,
-            }}
-          />
-        ))}
       </div>
     </section>
   )

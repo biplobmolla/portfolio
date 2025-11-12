@@ -112,8 +112,21 @@ module.exports = {
         "dark-card-gradient": "linear-gradient(145deg, #1e293b 0%, #0f172a 100%)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["JetBrains Mono", "Fira Code", "Consolas", "monospace"],
+        mono: ["JetBrains Mono", "Fira Code", "Consolas", "monospace"],
+      },
+      colors: {
+        terminal: {
+          bg: '#0a0a0a',
+          'bg-dark': '#050505',
+          'bg-light': '#1a1a1a',
+          green: '#22c55e',
+          'green-dark': '#16a34a',
+          'green-light': '#4ade80',
+          text: '#22c55e',
+          'text-muted': '#4ade80',
+          border: 'rgba(34, 197, 94, 0.2)',
+        },
       },
       spacing: {
         "18": "4.5rem",
@@ -132,5 +145,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addVariant }) {
+      addVariant('light', '.light &')
+    }
+  ],
 }

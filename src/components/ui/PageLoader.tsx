@@ -44,9 +44,9 @@ export default function PageLoader() {
   }, [currentLine])
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0a0a] text-green-400 font-mono overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center dark:bg-[#0a0a0a] light:bg-[#fafafa] dark:text-green-400 light:text-blue-600 font-mono overflow-hidden transition-colors duration-300">
       {/* Animated Grid Background */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 dark:opacity-10 light:opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `
             linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
@@ -61,7 +61,7 @@ export default function PageLoader() {
         {['{', '}', '[', ']', '(', ')', '<', '>', ';', '='].map((symbol, i) => (
           <motion.div
             key={i}
-            className="absolute text-green-500/20 text-4xl font-bold"
+            className="absolute dark:text-green-500/20 light:text-blue-500/20 text-4xl font-bold"
             style={{
               left: `${10 + (i * 8)}%`,
               top: `${10 + (i * 7)}%`,
@@ -90,18 +90,18 @@ export default function PageLoader() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="bg-[#1a1a1a] border border-green-500/30 rounded-lg shadow-2xl overflow-hidden"
+          className="dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 rounded-lg shadow-2xl overflow-hidden"
         >
           {/* Terminal Header */}
-          <div className="flex items-center gap-2 px-4 py-3 bg-[#0f0f0f] border-b border-green-500/20">
+          <div className="flex items-center gap-2 px-4 py-3 dark:bg-[#0f0f0f] light:bg-gray-50 border-b dark:border-green-500/20 light:border-blue-500/20">
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500/80" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
+              <div className="w-3 h-3 rounded-full dark:bg-green-500/80 light:bg-blue-500/80" />
             </div>
             <div className="flex items-center gap-2 ml-4">
-              <Terminal className="w-4 h-4 text-green-400" />
-              <span className="text-xs text-green-400/70">portfolio-terminal</span>
+              <Terminal className="w-4 h-4 dark:text-green-400 light:text-blue-600" />
+              <span className="text-xs dark:text-green-400/70 light:text-blue-600/70">portfolio-terminal</span>
             </div>
           </div>
 
@@ -109,14 +109,14 @@ export default function PageLoader() {
           <div className="p-6 min-h-[300px]">
             {/* Prompt */}
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-green-400">$</span>
-              <span className="text-green-400/70">biplob@portfolio</span>
-              <span className="text-green-400/50">:</span>
-              <span className="text-green-400/70">~</span>
+              <span className="dark:text-green-400 light:text-blue-600">$</span>
+              <span className="dark:text-green-400/70 light:text-blue-600/70">biplob@portfolio</span>
+              <span className="dark:text-green-400/50 light:text-blue-600/50">:</span>
+              <span className="dark:text-green-400/70 light:text-blue-600/70">~</span>
               <motion.span
                 animate={{ opacity: [1, 0] }}
                 transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
-                className="w-2 h-5 bg-green-400 inline-block"
+                className="w-2 h-5 dark:bg-green-400 light:bg-blue-600 inline-block"
               />
             </div>
 
@@ -127,9 +127,9 @@ export default function PageLoader() {
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="text-green-400/90"
+                  className="dark:text-green-400/90 light:text-blue-600/90"
                 >
-                  <span className="text-green-500/50 mr-2">{index + 1}</span>
+                  <span className="dark:text-green-500/50 light:text-blue-500/50 mr-2">{index + 1}</span>
                   {line}
                 </motion.div>
               ))}
@@ -138,14 +138,14 @@ export default function PageLoader() {
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="text-green-400"
+                  className="dark:text-green-400 light:text-blue-600"
                 >
-                  <span className="text-green-500/50 mr-2">{currentLine + 1}</span>
+                  <span className="dark:text-green-500/50 light:text-blue-500/50 mr-2">{currentLine + 1}</span>
                   {displayedText}
                   <motion.span
                     animate={{ opacity: [1, 0] }}
                     transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
-                    className="inline-block w-2 h-4 bg-green-400 ml-1"
+                    className="inline-block w-2 h-4 dark:bg-green-400 light:bg-blue-600 ml-1"
                   />
                 </motion.div>
               )}
@@ -154,7 +154,7 @@ export default function PageLoader() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-6 flex items-center gap-2 text-green-400/70"
+                  className="mt-6 flex items-center gap-2 dark:text-green-400/70 light:text-blue-600/70"
                 >
                   <motion.div
                     animate={{ rotate: 360 }}
@@ -177,11 +177,11 @@ export default function PageLoader() {
           className="flex justify-center gap-8 mt-8"
         >
           {[
-            { Icon: Code2, color: 'text-blue-400', delay: 0 },
-            { Icon: Zap, color: 'text-yellow-400', delay: 0.2 },
-            { Icon: Cpu, color: 'text-purple-400', delay: 0.4 },
-            { Icon: Terminal, color: 'text-green-400', delay: 0.6 },
-          ].map(({ Icon, color, delay }, index) => (
+            { Icon: Code2, darkColor: 'text-blue-400', lightColor: 'text-blue-600', delay: 0 },
+            { Icon: Zap, darkColor: 'text-yellow-400', lightColor: 'text-yellow-600', delay: 0.2 },
+            { Icon: Cpu, darkColor: 'text-purple-400', lightColor: 'text-purple-600', delay: 0.4 },
+            { Icon: Terminal, darkColor: 'text-green-400', lightColor: 'text-blue-600', delay: 0.6 },
+          ].map(({ Icon, darkColor, lightColor, delay }, index) => (
             <motion.div
               key={index}
               animate={{
@@ -195,7 +195,7 @@ export default function PageLoader() {
                 ease: "easeInOut"
               }}
             >
-              <Icon className={`w-6 h-6 ${color}`} />
+              <Icon className={`w-6 h-6 ${darkColor} ${lightColor}`} />
             </motion.div>
           ))}
         </motion.div>
@@ -211,7 +211,7 @@ export default function PageLoader() {
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
-                className="w-2 h-2 rounded-full bg-green-400"
+                className="w-2 h-2 rounded-full dark:bg-green-400 light:bg-blue-600"
                 animate={{
                   scale: [1, 1.5, 1],
                   opacity: [0.5, 1, 0.5],

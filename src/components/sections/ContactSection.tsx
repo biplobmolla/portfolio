@@ -221,7 +221,7 @@ export default function ContactSection() {
           <ScrollReveal delay={0.2}>
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold text-foreground mb-6">
+                <h3 className="text-2xl font-semibold dark:text-foreground light:text-purple-700 mb-6">
                   Contact Information
                 </h3>
                 <div className="space-y-6">
@@ -232,22 +232,22 @@ export default function ContactSection() {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className="flex items-center space-x-4 p-4 bg-background/50 rounded-lg hover:bg-background/80 transition-colors"
+                      className="flex items-center space-x-4 p-4 dark:bg-background/50 light:bg-gradient-to-br light:from-cyan-700 light:to-teal-700 dark:hover:bg-background/80 light:hover:from-cyan-600 light:hover:to-teal-600 rounded-lg transition-colors border dark:border-transparent light:border-cyan-800/40 shadow-sm light:shadow-cyan-900/30"
                     >
-                      <div className="p-3 rounded-full bg-primary/10">
-                        <info.icon className="h-6 w-6 text-primary" />
+                      <div className="p-3 rounded-full dark:bg-primary/10 light:bg-black/20">
+                        <info.icon className="h-6 w-6 dark:text-primary light:text-black" />
                       </div>
                       <div>
-                        <p className="font-medium text-foreground">{info.label}</p>
+                        <p className="font-medium dark:text-foreground light:text-black">{info.label}</p>
                         {info.href ? (
                           <a
                             href={info.href}
-                            className="text-muted-foreground hover:text-primary transition-colors"
+                            className="dark:text-muted-foreground light:text-black dark:hover:text-primary light:hover:text-gray-800 transition-colors font-medium"
                           >
                             {info.value}
                           </a>
                         ) : (
-                          <p className="text-muted-foreground">{info.value}</p>
+                          <p className="dark:text-muted-foreground light:text-black font-medium">{info.value}</p>
                         )}
                       </div>
                     </motion.div>
@@ -256,7 +256,7 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold text-foreground mb-6">
+                <h3 className="text-2xl font-semibold dark:text-foreground light:text-purple-700 mb-6">
                   Follow Me
                 </h3>
                 <div className="flex space-x-4">
@@ -272,10 +272,10 @@ export default function ContactSection() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className="p-4 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors group"
+                      className="p-4 rounded-full dark:bg-primary/10 light:bg-purple-100 dark:hover:bg-primary/20 light:hover:bg-purple-200 transition-colors group border dark:border-transparent light:border-purple-200/50"
                       aria-label={social.label}
                     >
-                      <social.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
+                      <social.icon className="h-6 w-6 dark:text-primary light:text-purple-600 group-hover:scale-110 transition-transform" />
                     </motion.a>
                   ))}
                 </div>
@@ -287,10 +287,10 @@ export default function ContactSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-r from-primary/5 to-purple-500/5 border border-primary/20 rounded-lg p-6"
+                className="dark:bg-gradient-to-r dark:from-primary/5 dark:to-purple-500/5 light:bg-gradient-to-r light:from-purple-50 light:to-pink-50 border dark:border-primary/20 light:border-purple-300/50 rounded-lg p-6"
               >
-                <h4 className="font-semibold text-foreground mb-2">Quick Response</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="font-semibold dark:text-foreground light:text-purple-800 mb-2">Quick Response</h4>
+                <p className="text-sm dark:text-muted-foreground light:text-purple-700">
                   I typically respond to messages within 24 hours. For urgent matters, 
                   feel free to call me directly.
                 </p>

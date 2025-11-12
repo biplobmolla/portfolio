@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, Terminal, FolderOpen } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { projects } from '@/data/portfolio'
 
@@ -13,15 +13,20 @@ export default function ProjectsSection() {
   const featuredProjects = projects.filter(project => project.featured)
 
   return (
-    <section id="projects" className="py-20 bg-background w-full overflow-hidden">
+    <section id="projects" className="py-20 dark:bg-[#0a0a0a] light:bg-[#fafafa] w-full overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-4 w-full max-w-7xl">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 rounded-lg font-mono text-sm mb-4">
+              <Terminal className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+              <span className="dark:text-green-500/70 light:text-blue-500/70">$</span>
+              <span className="dark:text-green-400 light:text-blue-600">git show projects</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold dark:text-green-400 light:text-blue-600 mb-4 font-mono terminal-text">
               Featured Projects
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A showcase of my recent work and side projects
+            <p className="text-xl dark:text-green-500/70 light:text-blue-500/70 max-w-3xl mx-auto font-mono">
+              // A showcase of my recent work and side projects
             </p>
           </div>
         </ScrollReveal>
@@ -34,40 +39,45 @@ export default function ProjectsSection() {
                 transition={{ duration: 0.3 }}
                 className="h-full"
               >
-                <Card className="h-full hover-lift group cursor-pointer border-2 border-transparent hover:border-primary/20 shadow-lg hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+                <Card className="h-full dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:border-green-500/50 light:hover:border-blue-500/50 group cursor-pointer terminal-glow transition-all duration-300">
                   <CardHeader>
-                    <div className="aspect-video bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="aspect-video dark:bg-[#0a0a0a] light:bg-gray-50 border dark:border-green-500/20 light:border-blue-500/20 rounded-lg mb-4 flex items-center justify-center dark:group-hover:border-green-500/40 light:group-hover:border-blue-500/40 transition-all duration-300 relative overflow-hidden">
+                      <div className="absolute inset-0 dark:bg-green-500/5 light:bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <div className="text-center relative z-10">
-                        <div className="text-4xl mb-2">🚀</div>
-                        <span className="text-sm text-muted-foreground">Project Preview</span>
+                        <FolderOpen className="h-12 w-12 dark:text-green-400/50 light:text-blue-600/50 mx-auto mb-2" />
+                        <span className="text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">project-preview</span>
                       </div>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    <CardTitle className="text-xl dark:group-hover:text-green-400 light:group-hover:text-blue-600 transition-colors font-mono dark:text-green-400 light:text-blue-600">
                       {project.title}
                     </CardTitle>
-                    <CardDescription className="text-base">
+                    <CardDescription className="text-base dark:text-green-500/80 light:text-blue-600/80 font-mono">
                       {project.description}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.slice(0, 3).map((tech) => (
-                        <Badge key={tech} variant="outline" className="text-xs">
+                        <Badge key={tech} variant="outline" className="text-xs dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 font-mono">
                           {tech}
                         </Badge>
                       ))}
                       {project.techStack.length > 3 && (
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="outline" className="text-xs dark:border-green-500/30 light:border-blue-500/30 dark:text-green-500/70 light:text-blue-500/70 font-mono">
                           +{project.techStack.length - 3} more
                         </Badge>
                       )}
                     </div>
                     {project.liveUrl && (
-                      <Button size="sm" variant="default" asChild className="w-full hover:scale-105 transition-transform duration-200">
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        asChild 
+                        className="w-full hover:scale-105 transition-transform duration-200 dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 dark:hover:bg-green-500/10 light:hover:bg-blue-500/10 font-mono"
+                      >
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="h-4 w-4 mr-2" />
-                          Live Demo
+                          $ open-live
                         </a>
                       </Button>
                     )}
@@ -75,32 +85,32 @@ export default function ProjectsSection() {
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button 
-                          variant="secondary" 
-                          className="w-full bg-gray-400 hover:bg-gray-600 text-white hover:text-white transition-all duration-200 hover:scale-105"
+                          variant="outline" 
+                          className="w-full dark:bg-[#0a0a0a] light:bg-gray-50 border dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 dark:hover:bg-green-500/10 light:hover:bg-blue-500/10 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-all duration-200 hover:scale-105 font-mono"
                         >
-                          View Details
+                          $ view-details
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-2xl">
+                      <DialogContent className="max-w-2xl dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600">
                         <DialogHeader>
-                          <DialogTitle className="text-2xl">{project.title}</DialogTitle>
-                          <DialogDescription className="text-base">
+                          <DialogTitle className="text-2xl font-mono">{project.title}</DialogTitle>
+                          <DialogDescription className="text-base dark:text-green-500/80 light:text-blue-600/80 font-mono">
                             {project.description}
                           </DialogDescription>
                         </DialogHeader>
                         <div className="space-y-6">
                           <div>
-                            <h4 className="font-semibold mb-2">Project Description</h4>
-                            <p className="text-muted-foreground text-sm leading-relaxed">
+                            <h4 className="font-semibold mb-2 dark:text-green-400 light:text-blue-600 font-mono">// Description</h4>
+                            <p className="dark:text-green-500/80 light:text-blue-600/80 text-sm leading-relaxed font-mono">
                               {project.longDescription}
                             </p>
                           </div>
                           
                           <div>
-                            <h4 className="font-semibold mb-3">Tech Stack</h4>
+                            <h4 className="font-semibold mb-3 dark:text-green-400 light:text-blue-600 font-mono">// Tech Stack</h4>
                             <div className="flex flex-wrap gap-2">
                               {project.techStack.map((tech) => (
-                                <Badge key={tech} variant="outline">
+                                <Badge key={tech} variant="outline" className="dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 font-mono">
                                   {tech}
                                 </Badge>
                               ))}
@@ -108,10 +118,10 @@ export default function ProjectsSection() {
                           </div>
                           
                           {project.liveUrl && (
-                            <Button asChild className="w-full hover:scale-105 transition-transform duration-200">
+                            <Button asChild className="w-full hover:scale-105 transition-transform duration-200 dark:bg-green-500/10 light:bg-blue-500/10 border dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 dark:hover:bg-green-500/20 light:hover:bg-blue-500/20 font-mono">
                               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                                 <ExternalLink className="h-4 w-4 mr-2" />
-                                View Live
+                                $ open-live
                               </a>
                             </Button>
                           )}
@@ -129,21 +139,21 @@ export default function ProjectsSection() {
         <ScrollReveal delay={0.6}>
           <div className="mt-16 text-center">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">5+</div>
-                <div className="text-sm text-muted-foreground">Projects</div>
+              <div className="text-center p-4 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/20 light:border-blue-500/20 rounded-lg">
+                <div className="text-3xl font-bold dark:text-green-400 light:text-blue-600 mb-2 font-mono">5+</div>
+                <div className="text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">Projects</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">3</div>
-                <div className="text-sm text-muted-foreground">Mobile Apps</div>
+              <div className="text-center p-4 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/20 light:border-blue-500/20 rounded-lg">
+                <div className="text-3xl font-bold dark:text-green-400 light:text-blue-600 mb-2 font-mono">3</div>
+                <div className="text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">Mobile Apps</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">2</div>
-                <div className="text-sm text-muted-foreground">Web Apps</div>
+              <div className="text-center p-4 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/20 light:border-blue-500/20 rounded-lg">
+                <div className="text-3xl font-bold dark:text-green-400 light:text-blue-600 mb-2 font-mono">2</div>
+                <div className="text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">Web Apps</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                <div className="text-sm text-muted-foreground">TypeScript</div>
+              <div className="text-center p-4 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/20 light:border-blue-500/20 rounded-lg">
+                <div className="text-3xl font-bold dark:text-green-400 light:text-blue-600 mb-2 font-mono">100%</div>
+                <div className="text-sm dark:text-green-500/70 light:text-blue-500/70 font-mono">TypeScript</div>
               </div>
             </div>
           </div>
@@ -152,4 +162,3 @@ export default function ProjectsSection() {
     </section>
   )
 }
-

@@ -12,7 +12,8 @@ import {
   Zap,
   Server,
   FileText,
-  Box
+  Box,
+  Terminal
 } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { skills } from '@/data/portfolio'
@@ -45,15 +46,20 @@ export default function SkillsSection() {
   }
 
   return (
-    <section id="skills" className="py-20 bg-background w-full overflow-hidden">
+    <section id="skills" className="py-20 dark:bg-[#0a0a0a] light:bg-[#fafafa] w-full overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-4 w-full max-w-4xl">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 rounded-lg font-mono text-sm mb-4">
+              <Terminal className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+              <span className="dark:text-green-500/70 light:text-blue-500/70">$</span>
+              <span className="dark:text-green-400 light:text-blue-600">ls skills/</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold dark:text-green-400 light:text-blue-600 mb-4 font-mono terminal-text">
               Skills & Technologies
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Technologies and tools I use to build modern applications
+            <p className="text-xl dark:text-green-500/70 light:text-blue-500/70 max-w-2xl mx-auto font-mono">
+              // Technologies and tools I use to build modern applications
             </p>
           </div>
         </ScrollReveal>
@@ -63,18 +69,18 @@ export default function SkillsSection() {
             const IconComponent = categoryIcons[category as keyof typeof categoryIcons]
             return (
               <ScrollReveal key={category} delay={categoryIndex * 0.2}>
-                <Card className="h-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                <Card className="h-full dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-all terminal-glow">
                   <CardHeader>
-                    <CardTitle className="flex items-center space-x-3 text-xl mb-2">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <IconComponent className="h-6 w-6 text-primary" />
+                    <CardTitle className="flex items-center space-x-3 text-xl mb-2 dark:text-green-400 light:text-blue-600 font-mono">
+                      <div className="p-3 dark:bg-green-500/10 light:bg-blue-500/10 border dark:border-green-500/30 light:border-blue-500/30 rounded-lg">
+                        <IconComponent className="h-6 w-6 dark:text-green-400 light:text-blue-600" />
                       </div>
-                      <span className="capitalize">{category} Development</span>
+                      <span className="capitalize">$ {category}</span>
                     </CardTitle>
-                    <p className="text-sm text-muted-foreground ml-12">
-                      {category === 'frontend' 
-                        ? 'Modern frontend technologies for building responsive user interfaces'
-                        : 'Backend technologies for server-side development and data management'
+                    <p className="text-sm dark:text-green-500/70 light:text-blue-500/70 ml-12 font-mono">
+                      // {category === 'frontend' 
+                        ? 'Modern frontend technologies for building responsive UIs'
+                        : 'Backend technologies for server-side development'
                       }
                     </p>
                   </CardHeader>
@@ -91,11 +97,11 @@ export default function SkillsSection() {
                             viewport={{ once: true }}
                             className="group"
                           >
-                            <div className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-all duration-300 hover:scale-105 border border-transparent hover:border-primary/20">
-                              <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
-                                <SkillIcon className="h-5 w-5 text-primary" />
+                            <div className="flex items-center space-x-3 p-3 dark:bg-[#0a0a0a] light:bg-gray-50 border dark:border-green-500/20 light:border-blue-500/20 rounded-lg dark:hover:bg-green-500/5 light:hover:bg-blue-500/5 dark:hover:border-green-500/40 light:hover:border-blue-500/40 transition-all duration-300 hover:scale-105">
+                              <div className="p-2 dark:bg-green-500/10 light:bg-blue-500/10 border dark:border-green-500/20 light:border-blue-500/20 rounded-lg dark:group-hover:bg-green-500/20 light:group-hover:bg-blue-500/20 transition-colors duration-300">
+                                <SkillIcon className="h-5 w-5 dark:text-green-400 light:text-blue-600" />
                               </div>
-                              <span className="text-sm font-medium text-foreground">
+                              <span className="text-sm font-medium dark:text-green-400 light:text-blue-600 font-mono">
                                 {skill.name}
                               </span>
                             </div>

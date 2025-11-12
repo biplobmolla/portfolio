@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, Mail, Phone, Github, Linkedin, Twitter, Code, Palette, Plane, Heart, BookOpen } from 'lucide-react'
+import { MapPin, Mail, Phone, Github, Linkedin, Twitter, Code, Palette, Plane, Heart, BookOpen, Terminal } from 'lucide-react'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import { personalInfo } from '@/data/portfolio'
 
@@ -16,22 +16,27 @@ export default function AboutSection() {
   ]
 
   const stats = [
-    { label: 'Years of Experience', value: '2+' },
-    { label: 'Projects Completed', value: '15+' },
-    { label: 'Technologies Mastered', value: '20+' },
-    { label: 'Happy Clients', value: '10+' }
+    { label: 'Years of Experience', value: '2+', command: 'experience --years' },
+    { label: 'Projects Completed', value: '15+', command: 'projects --count' },
+    { label: 'Technologies Mastered', value: '20+', command: 'tech --list' },
+    { label: 'Happy Clients', value: '10+', command: 'clients --satisfied' }
   ]
 
   return (
-    <section id="about" className="py-20 bg-background w-full overflow-hidden">
+    <section id="about" className="py-20 dark:bg-[#0a0a0a] light:bg-[#fafafa] w-full overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-4 w-full max-w-7xl">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 rounded-lg font-mono text-sm mb-4">
+              <Terminal className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+              <span className="dark:text-green-500/70 light:text-blue-500/70">$</span>
+              <span className="dark:text-green-400 light:text-blue-600">cat about.txt</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold dark:text-green-400 light:text-blue-600 mb-4 font-mono terminal-text">
               About Me
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Passionate frontend developer crafting digital experiences that make a difference
+            <p className="text-xl dark:text-green-500/70 light:text-blue-500/70 max-w-3xl mx-auto font-mono">
+              // Passionate frontend developer crafting digital experiences
             </p>
           </div>
         </ScrollReveal>
@@ -41,20 +46,20 @@ export default function AboutSection() {
           <div className="space-y-8">
             {/* Personal Story */}
             <ScrollReveal>
-              <Card className="hover-lift">
+              <Card className="dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-all terminal-glow">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-3">
-                    <Heart className="h-6 w-6 text-primary" />
-                    <span>About Me</span>
+                  <CardTitle className="flex items-center space-x-3 dark:text-green-400 light:text-blue-600 font-mono">
+                    <Heart className="h-6 w-6 dark:text-green-400 light:text-blue-600" />
+                    <span>$ about.bio</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="dark:text-green-500/80 light:text-blue-600/80 leading-relaxed font-mono text-sm">
                     I&apos;m a passionate frontend developer from Dhaka, Bangladesh, with over 2 years of experience 
                     building modern web applications. My journey began with curiosity about how websites work, 
                     and it has evolved into a deep love for creating beautiful, functional user experiences.
                   </p>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="dark:text-green-500/80 light:text-blue-600/80 leading-relaxed font-mono text-sm">
                     When I&apos;m not coding, you&apos;ll find me exploring new technologies, traveling to discover 
                     different cultures, or enjoying a good cup of coffee while brainstorming my next project. 
                     I believe in continuous learning and staying updated with the latest trends in web development.
@@ -65,39 +70,39 @@ export default function AboutSection() {
 
             {/* Contact Information */}
             <ScrollReveal delay={0.1}>
-              <Card className="hover-lift">
+              <Card className="bg-[#1a1a1a] border border-green-500/30 hover:border-green-500/50 transition-all terminal-glow">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-3">
-                    <Mail className="h-6 w-6 text-primary" />
-                    <span>Get In Touch</span>
+                  <CardTitle className="flex items-center space-x-3 text-green-400 font-mono">
+                    <Mail className="h-6 w-6 text-green-400" />
+                    <span>$ contact.info</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <MapPin className="h-4 w-4 text-primary" />
-                      <span className="text-muted-foreground">{personalInfo.location}</span>
+                    <div className="flex items-center space-x-3 font-mono text-sm">
+                      <MapPin className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+                      <span className="dark:text-green-500/80 light:text-blue-600/80">{personalInfo.location}</span>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href={`mailto:${personalInfo.email}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    <div className="flex items-center space-x-3 font-mono text-sm">
+                      <Mail className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+                      <a href={`mailto:${personalInfo.email}`} className="dark:text-green-500/80 light:text-blue-600/80 dark:hover:text-green-400 light:hover:text-blue-600 transition-colors">
                         {personalInfo.email}
                       </a>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Phone className="h-4 w-4 text-primary" />
-                      <a href={`tel:${personalInfo.phone}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    <div className="flex items-center space-x-3 font-mono text-sm">
+                      <Phone className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
+                      <a href={`tel:${personalInfo.phone}`} className="dark:text-green-500/80 light:text-blue-600/80 dark:hover:text-green-400 light:hover:text-blue-600 transition-colors">
                         {personalInfo.phone}
                       </a>
                     </div>
                   </div>
                   
-                  <div className="pt-4 border-t">
-                    <h4 className="font-semibold text-foreground mb-3">Current Status</h4>
+                  <div className="pt-4 border-t dark:border-green-500/20 light:border-blue-500/20">
+                    <h4 className="font-semibold dark:text-green-400 light:text-blue-600 mb-3 font-mono">// Status</h4>
                     <div className="flex flex-wrap gap-2">
-                      <Badge variant="default" className="text-xs">Available for Work</Badge>
-                      <Badge variant="secondary" className="text-xs">Open to Collaboration</Badge>
-                      <Badge variant="outline" className="text-xs">Remote Friendly</Badge>
+                      <Badge variant="outline" className="text-xs dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 font-mono">Available for Work</Badge>
+                      <Badge variant="outline" className="text-xs dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 font-mono">Open to Collaboration</Badge>
+                      <Badge variant="outline" className="text-xs dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 font-mono">Remote Friendly</Badge>
                     </div>
                   </div>
                 </CardContent>
@@ -109,11 +114,11 @@ export default function AboutSection() {
           <div className="space-y-8">
             {/* Achievements & Stats */}
             <ScrollReveal delay={0.2}>
-              <Card className="hover-lift">
+              <Card className="dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-all terminal-glow">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-3">
-                    <Code className="h-6 w-6 text-primary" />
-                    <span>Achievements</span>
+                  <CardTitle className="flex items-center space-x-3 dark:text-green-400 light:text-blue-600 font-mono">
+                    <Code className="h-6 w-6 dark:text-green-400 light:text-blue-600" />
+                    <span>$ stats</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -125,10 +130,11 @@ export default function AboutSection() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="text-center p-4 bg-muted/50 rounded-lg"
+                        className="text-center p-4 dark:bg-[#0a0a0a] light:bg-gray-50 border dark:border-green-500/20 light:border-blue-500/20 dark:hover:border-green-500/40 light:hover:border-blue-500/40 transition-all"
                       >
-                        <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
-                        <div className="text-xs text-muted-foreground">{stat.label}</div>
+                        <div className="text-2xl font-bold dark:text-green-400 light:text-blue-600 mb-1 font-mono">{stat.value}</div>
+                        <div className="text-xs dark:text-green-500/70 light:text-blue-500/70 font-mono">{stat.label}</div>
+                        <div className="text-xs dark:text-green-500/50 light:text-blue-500/50 font-mono mt-1">// {stat.command}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -138,11 +144,11 @@ export default function AboutSection() {
 
             {/* Interests & Values */}
             <ScrollReveal delay={0.3}>
-              <Card className="hover-lift">
+              <Card className="dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-all terminal-glow">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-3">
-                    <Palette className="h-6 w-6 text-primary" />
-                    <span>Interests & Values</span>
+                  <CardTitle className="flex items-center space-x-3 dark:text-green-400 light:text-blue-600 font-mono">
+                    <Palette className="h-6 w-6 dark:text-green-400 light:text-blue-600" />
+                    <span>$ interests</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -154,12 +160,12 @@ export default function AboutSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="flex items-center space-x-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
+                        className="flex items-center space-x-3 p-3 dark:bg-[#0a0a0a] light:bg-gray-50 border dark:border-green-500/20 light:border-blue-500/20 rounded-lg dark:hover:bg-green-500/5 light:hover:bg-blue-500/5 dark:hover:border-green-500/40 light:hover:border-blue-500/40 transition-colors"
                       >
-                        <interest.icon className="h-5 w-5 text-primary flex-shrink-0" />
+                        <interest.icon className="h-5 w-5 dark:text-green-400 light:text-blue-600 flex-shrink-0" />
                         <div className="flex-1">
-                          <p className="font-medium text-foreground text-sm">{interest.label}</p>
-                          <p className="text-xs text-muted-foreground">{interest.description}</p>
+                          <p className="font-medium dark:text-green-400 light:text-blue-600 text-sm font-mono">{interest.label}</p>
+                          <p className="text-xs dark:text-green-500/70 light:text-blue-500/70 font-mono">{interest.description}</p>
                         </div>
                       </motion.div>
                     ))}
@@ -173,7 +179,7 @@ export default function AboutSection() {
         {/* Social Links */}
         <ScrollReveal delay={0.3}>
           <div className="mt-16 text-center">
-            <h3 className="text-2xl font-semibold text-foreground mb-8">Let&apos;s Connect</h3>
+            <h3 className="text-2xl font-semibold dark:text-green-400 light:text-blue-600 mb-8 font-mono">// Let&apos;s Connect</h3>
             <div className="flex justify-center space-x-6">
               <motion.a
                 href={personalInfo.github}
@@ -181,10 +187,10 @@ export default function AboutSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors group"
+                className="p-3 rounded-lg dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:bg-green-500/10 light:hover:bg-blue-500/10 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-colors group terminal-glow"
                 aria-label="GitHub"
               >
-                <Github className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
+                <Github className="h-6 w-6 dark:text-green-400 light:text-blue-600 group-hover:scale-110 transition-transform" />
               </motion.a>
               <motion.a
                 href={personalInfo.linkedin}
@@ -192,10 +198,10 @@ export default function AboutSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors group"
+                className="p-3 rounded-lg dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:bg-green-500/10 light:hover:bg-blue-500/10 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-colors group terminal-glow"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
+                <Linkedin className="h-6 w-6 dark:text-green-400 light:text-blue-600 group-hover:scale-110 transition-transform" />
               </motion.a>
               <motion.a
                 href={personalInfo.twitter}
@@ -203,10 +209,10 @@ export default function AboutSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors group"
+                className="p-3 rounded-lg dark:bg-[#1a1a1a] light:bg-white border dark:border-green-500/30 light:border-blue-500/30 dark:hover:bg-green-500/10 light:hover:bg-blue-500/10 dark:hover:border-green-500/50 light:hover:border-blue-500/50 transition-colors group terminal-glow"
                 aria-label="Twitter"
               >
-                <Twitter className="h-6 w-6 text-primary group-hover:scale-110 transition-transform" />
+                <Twitter className="h-6 w-6 dark:text-green-400 light:text-blue-600 group-hover:scale-110 transition-transform" />
               </motion.a>
             </div>
           </div>

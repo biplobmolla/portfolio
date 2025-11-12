@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import InitialLoader from '@/components/ui/InitialLoader'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -78,14 +79,42 @@ export default function RootLayout({
         <meta name="theme-color" content="#3b82f6" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={`${inter.className} antialiased`}>
-        <InitialLoader>
-          <Header />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-        </InitialLoader>
+      <body className={`${inter.className} antialiased font-mono`}>
+        <ThemeProvider>
+          <InitialLoader>
+            <div className="relative min-h-screen dark:bg-[#0a0a0a] light:bg-[#fafafa] transition-colors duration-300">
+              {/* Terminal Grid Background - Dark */}
+              <div className="fixed inset-0 opacity-10 pointer-events-none dark:block light:hidden" style={{
+                backgroundImage: `
+                  linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '50px 50px'
+              }} />
+              
+              {/* Terminal Grid Background - Light */}
+              <div className="fixed inset-0 opacity-5 pointer-events-none dark:hidden light:block" style={{
+                backgroundImage: `
+                  linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
+                `,
+                backgroundSize: '50px 50px'
+              }} />
+              
+              {/* Scanline Effect */}
+              <div className="fixed inset-0 pointer-events-none opacity-5 dark:opacity-5 light:opacity-3" style={{
+                background: 'linear-gradient(transparent 50%, rgba(34, 197, 94, 0.03) 50%)',
+                backgroundSize: '100% 4px',
+              }} />
+              
+              <Header />
+              <main className="relative z-10 min-h-screen">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </InitialLoader>
+        </ThemeProvider>
       </body>
     </html>
   )

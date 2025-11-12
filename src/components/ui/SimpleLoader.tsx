@@ -5,9 +5,9 @@ import { Terminal } from 'lucide-react'
 
 export default function SimpleLoader() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] text-green-400 font-mono">
+    <div className="min-h-screen flex items-center justify-center dark:bg-[#0a0a0a] light:bg-[#fafafa] dark:text-green-400 light:text-blue-600 font-mono transition-colors duration-300">
       {/* Animated Grid Background */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 dark:opacity-10 light:opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `
             linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
@@ -31,7 +31,7 @@ export default function SimpleLoader() {
           }}
           className="mb-6"
         >
-          <Terminal className="w-16 h-16 mx-auto text-green-400" />
+          <Terminal className="w-16 h-16 mx-auto dark:text-green-400 light:text-blue-600" />
         </motion.div>
 
         {/* Loading Text */}
@@ -42,7 +42,7 @@ export default function SimpleLoader() {
           className="space-y-2"
         >
           <motion.p
-            className="text-green-400 text-lg"
+            className="dark:text-green-400 light:text-blue-600 text-lg"
             animate={{ 
               opacity: [0.5, 1, 0.5]
             }}
@@ -60,7 +60,7 @@ export default function SimpleLoader() {
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
-                className="w-1.5 h-1.5 rounded-full bg-green-400"
+                className="w-1.5 h-1.5 rounded-full dark:bg-green-400 light:bg-blue-600"
                 animate={{
                   scale: [1, 1.5, 1],
                   opacity: [0.5, 1, 0.5],

@@ -4,79 +4,139 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
+    /* Terminal/Developer Theme - Dark Mode */
+    --background: 10 10% 4%;
+    --foreground: 142 71% 45%;
+    --card: 10 10% 6%;
+    --card-foreground: 142 71% 50%;
+    --popover: 10 10% 6%;
+    --popover-foreground: 142 71% 50%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 10 10% 4%;
+    --secondary: 10 10% 10%;
+    --secondary-foreground: 142 71% 55%;
+    --muted: 10 10% 8%;
+    --muted-foreground: 142 71% 40%;
+    --accent: 142 71% 35%;
+    --accent-foreground: 142 71% 60%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --border: 142 71% 20%;
+    --input: 142 71% 15%;
+    --ring: 142 71% 45%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Terminal/Developer Theme - Dark Mode */
+    --background: 10 10% 4%;
+    --foreground: 142 71% 45%;
+    --card: 10 10% 6%;
+    --card-foreground: 142 71% 50%;
+    --popover: 10 10% 6%;
+    --popover-foreground: 142 71% 50%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 10 10% 4%;
+    --secondary: 10 10% 10%;
+    --secondary-foreground: 142 71% 55%;
+    --muted: 10 10% 8%;
+    --muted-foreground: 142 71% 40%;
+    --accent: 142 71% 35%;
+    --accent-foreground: 142 71% 60%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
+    --border: 142 71% 20%;
+    --input: 142 71% 15%;
+    --ring: 142 71% 45%;
+  }
+
+  .light {
+    /* Terminal/Developer Theme - Light Mode */
+    --background: 0 0% 98%;
+    --foreground: 142 71% 25%;
+    --card: 0 0% 100%;
+    --card-foreground: 142 71% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 71% 20%;
+    --primary: 142 71% 40%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 142 71% 30%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 142 71% 35%;
+    --accent: 142 71% 50%;
+    --accent-foreground: 142 71% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 142 71% 80%;
+    --input: 142 71% 90%;
+    --ring: 142 71% 40%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    box-sizing: border-box;
   }
   html {
     overflow-x: hidden;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply font-mono;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Dark theme styles */
+  .dark body {
+    @apply bg-[#0a0a0a] text-green-400;
+    background-image: 
+      linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* Light theme styles */
+  .light body {
+    @apply bg-[#fafafa] text-green-700;
+    background-image: 
+      linear-gradient(rgba(34, 197, 94, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 197, 94, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Terminal Style */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-muted;
+.dark ::-webkit-scrollbar-track {
+  background: #0a0a0a;
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-primary/50 rounded-full;
+.light ::-webkit-scrollbar-track {
+  background: #fafafa;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary/70;
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.3);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 9999px;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.4);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.5);
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.6);
 }
 
 /* Smooth scrolling */
@@ -85,10 +145,6 @@ html {
   overflow-x: hidden;
 }
 
-/* Prevent horizontal overflow */
-* {
-  box-sizing: border-box;
-}
 
 body {
   overflow-x: hidden;
@@ -151,12 +207,48 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Text gradient */
+/* Text gradient - Terminal Style */
 .text-gradient {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+  background: linear-gradient(135deg, #22c55e, #4ade80, #86efac);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Terminal text effects */
+.dark .terminal-text {
+  color: #22c55e;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.light .terminal-text {
+  color: #16a34a;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+.dark .terminal-glow {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+.light .terminal-glow {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+}
+
+/* Code block styling */
+.dark .code-block {
+  background: #1a1a1a;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.light .code-block {
+  background: #ffffff;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /* Hover effects */
