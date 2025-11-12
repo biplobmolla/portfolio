@@ -68,7 +68,7 @@ export default function Footer() {
                 <h3 className="text-2xl font-bold dark:text-green-400 light:text-blue-600 font-mono">{personalInfo.name}</h3>
               </div>
               <p className="dark:text-green-500/70 light:text-blue-500/70 leading-relaxed mb-4 font-mono text-sm">
-                // {personalInfo.title} passionate about creating beautiful, interactive web experiences 
+                {'//'} {personalInfo.title} passionate about creating beautiful, interactive web experiences 
                 with modern technologies.
               </p>
               <div className="flex space-x-4">
@@ -102,7 +102,7 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold dark:text-green-400 light:text-blue-600 mb-4 font-mono">// Quick Links</h4>
+              <h4 className="text-lg font-semibold dark:text-green-400 light:text-blue-600 mb-4 font-mono">{'//'} Quick Links</h4>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
                   <motion.li
@@ -135,7 +135,7 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold dark:text-green-400 light:text-blue-600 mb-4 font-mono">// Contact</h4>
+              <h4 className="text-lg font-semibold dark:text-green-400 light:text-blue-600 mb-4 font-mono">{'//'} Contact</h4>
               <div className="space-y-3">
                 <a
                   href={`mailto:${personalInfo.email}`}

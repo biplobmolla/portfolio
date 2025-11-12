@@ -26,7 +26,7 @@ export default function ProjectsSection() {
               Featured Projects
             </h2>
             <p className="text-xl dark:text-green-500/70 light:text-blue-500/70 max-w-3xl mx-auto font-mono">
-              // A showcase of my recent work and side projects
+              {'//'} A showcase of my recent work and side projects
             </p>
           </div>
         </ScrollReveal>
@@ -100,14 +100,14 @@ export default function ProjectsSection() {
                         </DialogHeader>
                         <div className="space-y-6">
                           <div>
-                            <h4 className="font-semibold mb-2 dark:text-green-400 light:text-blue-600 font-mono">// Description</h4>
+                            <h4 className="font-semibold mb-2 dark:text-green-400 light:text-blue-600 font-mono">{'//'} Description</h4>
                             <p className="dark:text-green-500/80 light:text-blue-600/80 text-sm leading-relaxed font-mono">
                               {project.longDescription}
                             </p>
                           </div>
                           
                           <div>
-                            <h4 className="font-semibold mb-3 dark:text-green-400 light:text-blue-600 font-mono">// Tech Stack</h4>
+                            <h4 className="font-semibold mb-3 dark:text-green-400 light:text-blue-600 font-mono">{'//'} Tech Stack</h4>
                             <div className="flex flex-wrap gap-2">
                               {project.techStack.map((tech) => (
                                 <Badge key={tech} variant="outline" className="dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 font-mono">

@@ -42,7 +42,7 @@ export default function ExperienceSection() {
               Professional Experience
             </h2>
             <p className="text-xl dark:text-green-500/70 light:text-blue-500/70 max-w-3xl mx-auto font-mono">
-              // Building innovative solutions and leading frontend development
+              {'//'} Building innovative solutions and leading frontend development
             </p>
           </div>
         </ScrollReveal>
@@ -106,7 +106,7 @@ export default function ExperienceSection() {
                         <div className="flex items-center gap-2">
                           <Briefcase className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
                           <span className="text-sm font-medium dark:text-green-500/70 light:text-blue-500/70 font-mono">
-                            // {exp.projectType}
+                            {'//'} {exp.projectType}
                           </span>
                         </div>
 
@@ -114,7 +114,7 @@ export default function ExperienceSection() {
                         <div className="space-y-3">
                           <h4 className="text-sm font-semibold dark:text-green-400 light:text-blue-600 flex items-center gap-2 font-mono">
                             <Code className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
-                            // Key Achievements
+                            {'//'} Key Achievements
                           </h4>
                           <ul className="space-y-2">
                             {exp.description.map((desc, descIndex) => (
@@ -132,7 +132,7 @@ export default function ExperienceSection() {
                             <div className="flex items-start gap-3">
                               <TrendingUp className="h-5 w-5 dark:text-green-400 light:text-blue-600 mt-0.5 flex-shrink-0" />
                               <div>
-                                <h4 className="text-sm font-semibold dark:text-green-400 light:text-blue-600 mb-1 font-mono">// Impact</h4>
+                                <h4 className="text-sm font-semibold dark:text-green-400 light:text-blue-600 mb-1 font-mono">{'//'} Impact</h4>
                                 <p className="text-sm dark:text-green-500/80 light:text-blue-600/80 font-mono">{exp.impact}</p>
                               </div>
                             </div>
@@ -143,7 +143,7 @@ export default function ExperienceSection() {
                         <div className="space-y-3">
                           <h4 className="text-sm font-semibold dark:text-green-400 light:text-blue-600 flex items-center gap-2 font-mono">
                             <Users className="h-4 w-4 dark:text-green-400 light:text-blue-600" />
-                            // Technologies Used
+                            {'//'} Technologies Used
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {exp.techStack.map((tech) => (

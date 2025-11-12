@@ -132,7 +132,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mb-8"
           >
-            <p className="text-sm md:text-base dark:text-green-500/60 light:text-blue-500/60 mb-4 font-mono">// Tech Stack</p>
+            <p className="text-sm md:text-base dark:text-green-500/60 light:text-blue-500/60 mb-4 font-mono">{'//'} Tech Stack</p>
             <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
               {keySkills.map((skill, index) => (
                 <motion.span
@@ -233,7 +233,7 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 1.8 }}
             className="flex flex-col items-center"
           >
-            <p className="text-xs dark:text-green-500/50 light:text-blue-500/50 mb-2 font-mono">// scroll to explore</p>
+            <p className="text-xs dark:text-green-500/50 light:text-blue-500/50 mb-2 font-mono">{'//'} scroll to explore</p>
             <motion.button
               onClick={scrollToNext}
               className="dark:text-green-500/50 light:text-blue-500/50 dark:hover:text-green-400 light:hover:text-blue-600 transition-colors group"

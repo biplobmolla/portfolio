@@ -59,7 +59,7 @@ export default function SkillsSection() {
               Skills & Technologies
             </h2>
             <p className="text-xl dark:text-green-500/70 light:text-blue-500/70 max-w-2xl mx-auto font-mono">
-              // Technologies and tools I use to build modern applications
+              {'//'} Technologies and tools I use to build modern applications
             </p>
           </div>
         </ScrollReveal>
@@ -78,7 +78,7 @@ export default function SkillsSection() {
                       <span className="capitalize">$ {category}</span>
                     </CardTitle>
                     <p className="text-sm dark:text-green-500/70 light:text-blue-500/70 ml-12 font-mono">
-                      // {category === 'frontend' 
+                      {'//'} {category === 'frontend' 
                         ? 'Modern frontend technologies for building responsive UIs'
                         : 'Backend technologies for server-side development'
                       }

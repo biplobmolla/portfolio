@@ -36,7 +36,7 @@ export default function AboutSection() {
               About Me
             </h2>
             <p className="text-xl dark:text-green-500/70 light:text-blue-500/70 max-w-3xl mx-auto font-mono">
-              // Passionate frontend developer crafting digital experiences
+              {'//'} Passionate frontend developer crafting digital experiences
             </p>
           </div>
         </ScrollReveal>
@@ -98,7 +98,7 @@ export default function AboutSection() {
                   </div>
                   
                   <div className="pt-4 border-t dark:border-green-500/20 light:border-blue-500/20">
-                    <h4 className="font-semibold dark:text-green-400 light:text-blue-600 mb-3 font-mono">// Status</h4>
+                    <h4 className="font-semibold dark:text-green-400 light:text-blue-600 mb-3 font-mono">{'//'} Status</h4>
                     <div className="flex flex-wrap gap-2">
                       <Badge variant="outline" className="text-xs dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 font-mono">Available for Work</Badge>
                       <Badge variant="outline" className="text-xs dark:border-green-500/30 light:border-blue-500/30 dark:text-green-400 light:text-blue-600 font-mono">Open to Collaboration</Badge>
@@ -134,7 +134,7 @@ export default function AboutSection() {
                       >
                         <div className="text-2xl font-bold dark:text-green-400 light:text-blue-600 mb-1 font-mono">{stat.value}</div>
                         <div className="text-xs dark:text-green-500/70 light:text-blue-500/70 font-mono">{stat.label}</div>
-                        <div className="text-xs dark:text-green-500/50 light:text-blue-500/50 font-mono mt-1">// {stat.command}</div>
+                        <div className="text-xs dark:text-green-500/50 light:text-blue-500/50 font-mono mt-1">{'//'} {stat.command}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -179,7 +179,7 @@ export default function AboutSection() {
         {/* Social Links */}
         <ScrollReveal delay={0.3}>
           <div className="mt-16 text-center">
-            <h3 className="text-2xl font-semibold dark:text-green-400 light:text-blue-600 mb-8 font-mono">// Let&apos;s Connect</h3>
+            <h3 className="text-2xl font-semibold dark:text-green-400 light:text-blue-600 mb-8 font-mono">{'//'} Let&apos;s Connect</h3>
             <div className="flex justify-center space-x-6">
               <motion.a
                 href={personalInfo.github}
