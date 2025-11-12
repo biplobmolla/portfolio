@@ -15,7 +15,7 @@ const navItems = [
   { name: 'Skills', href: '#skills', command: 'ls skills/' },
   { name: 'Projects', href: '#projects', command: 'git show projects' },
   { name: 'Experience', href: '#experience', command: 'history' },
-  { name: 'Contact', href: '#contact', command: 'mailto' },
+  { name: 'Contact', href: 'mailto:ahmedtamim317@gmail.com', command: 'mailto' },
 ]
 
 export default function Header() {
@@ -48,6 +48,14 @@ export default function Header() {
   }, [])
 
   const scrollToSection = (href: string) => {
+    // Check if it's a mailto link
+    if (href.startsWith('mailto:')) {
+      window.location.href = href
+      setIsMobileMenuOpen(false)
+      return
+    }
+    
+    // Otherwise, scroll to section
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
@@ -99,7 +107,7 @@ export default function Header() {
           {/* Desktop Navigation - Terminal Commands */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item, index) => {
-              const isActive = activeSection === item.href.replace('#', '')
+              const isActive = item.href.startsWith('#') ? activeSection === item.href.replace('#', '') : false
               return (
                 <motion.button
                   key={item.name}
@@ -219,7 +227,7 @@ export default function Header() {
             >
               <div className="space-y-2">
                 {navItems.map((item, index) => {
-                  const isActive = activeSection === item.href.replace('#', '')
+                  const isActive = item.href.startsWith('#') ? activeSection === item.href.replace('#', '') : false
                   return (
                     <motion.button
                       key={item.name}
